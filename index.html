@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUKSTOA</title>
+    <title>BUKSTOR</title>
     <!-- 폰트, 아이콘 설정 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,9 +21,18 @@
     <script defer src="./scripts/forWireframe.js"></script>
     <script>
         window.onload = function(){
-            const urlBigBanner = getkakaoBookURLParameter("한강", "person", undefined, 6);
-            const asyncResult = searchKakaoBookData_async(urlBigBanner);
-            // makePromiseList(asyncResult);
+            mainBookThumbnailResizing();
+            // const urlRecent = getkakaoBookURLParameter("오월", undefined, "latest");
+            // const asyncRecent = searchKakaoBookData_async(urlRecent);
+            // mainPromiseList(asyncRecent, 'recent');
+
+            // const urlTopic = getkakaoBookURLParameter("여행");
+            // const asyncTopic = searchKakaoBookData_async(urlTopic);
+            // mainPromiseList(asyncTopic, 'topic');
+
+            // const urlTBigBanner = getkakaoBookURLParameter("한강", "person", undefined, 1);
+            // const asyncBigBanner = searchKakaoBookData_async(urlRecent);
+            //mainPromiseList(asyncBigBanner, 'recent');
         }
     </script>
 </head>
@@ -45,7 +54,14 @@
         <div class="headerBottom">
             <div class="wrap">
                 <img src="./images/logoColor.png">
+                
+                <!-- 장바구니 -->
+                <p><i class="fa-solid fa-bag-shopping"></i></p>
+                <!-- 검색 -->
+                <p><i class="fa-solid fa-magnifying-glass"></i></p>
+                <!-- 헤더 메뉴 -->
                 <nav>
+                 
                     <ul class="main">
                         <li><a href="">인기 도서</a></li>
                         <li><a href="">신상 도서</a></li>
@@ -55,9 +71,10 @@
                         <li><a href="">블로그</a></li>
                     </ul>
                 </nav>
+
+                
             </div>
-            <p><i class="fa-solid fa-bag-shopping"></i></p>
-            <p><i class="fa-solid fa-magnifying-glass"></i></p>
+            
             
             
         </div>
@@ -210,7 +227,11 @@
                     </a>
                 </li>
             </ul>
-
+        </div>
+        <div id="wideBanner">
+            큰 배너
+        </div>
+        <div class="wrap">
             <h1>함께 여행갈래요?</h1>
             <ul class="bookList">
                 <li>
@@ -285,12 +306,78 @@
                 </li>
             </ul>
         </div>
-        <div id="wideBanner">
-            큰 배너
+
+        
+
+        <div id="event">
+            <div class="wrap">
+                <ul>
+                    <li>
+                        이벤트
+                    </li>
+                    <li>
+                        이벤트
+                    </li>
+                    <li>
+                        이벤트
+                    </li>
+                    <li>
+                        이벤트
+                    </li>
+                </ul>
+            </div>
         </div>
+
+        <div id="blog">
+            <div class="wrap">
+                <ul>
+                    <li>
+                        블로그 글
+                    </li>
+                    <li>
+                        블로그 글
+                    </li>
+                    <li>
+                        블로그 글
+                    </li>
+                    <li>
+                        블로그 글
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
     </section>
     <footer>
-
+        <div class="wrap">
+            <div class="adress">주소</div>
+            <ul class="footerMenu">
+                <li><a href="#">도서 검색</a></li>
+                <li><a href="#">e-book</a></li>
+                <li><a href="#">이벤트</a></li>
+                <li><a href="#">블로그</a></li>
+                <li><a href="#">대량 구매 안내</a></li>
+            </ul>
+            <ul class="footerMenu">
+                <li><a href="#">회사 소개</a></li>
+                <li><a href="#">이용 약관</a></li>
+                <li><a href="#">개인정보 보호정책</a></li>
+                <li><a href="#">채용 정보</a></li>
+                <li><a href="#">광고 안내</a></li>
+            </ul>
+            <div class="contect">연락처</div>
+            <div class="footerBottom">
+                <ul class="sns">
+                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                </ul>
+                <p class="copyright">
+                    Copyright &copy; BUKSTOR<br>Origin Design from Kalium | Designed by Eo-Jin Nam
+                </p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>

@@ -57,17 +57,22 @@ async function searchKakaoBookData_async(kakaoBookParameter) {
  * @summary Promise 형태의 data를 Object형태로 바꾼 후 main용 list 생성
  * @param {Promise} originalData Promise 형태의 data
  */
-async function makePromiseList(promiseData) {
+async function mainPromiseList(promiseData, listSort) {
+    if (listSort == 'recent') {
+        listSort = 0;
+    } else {
+        listSort = 1;
+    }
+
     promiseData.then(function(data){
         const allBookInfo = data.documents;
         for(let i in allBookInfo){
-            
-            let bookIndex =  $('.bookList>li').eq(i);
-            bookIndex.children('img').attr('src', allBookInfo[i].thumbnail);
-            bookIndex.children('p:eq(0)').text(allBookInfo[i].title);
-            bookIndex.children('p:eq(1)').text(allBookInfo[i].publisher);
-            bookIndex.children('p:eq(2)').text(allBookInfo[i].authors);
-            bookIndex.children('p:eq(3)').text("￦ " + putCommaInNumber(allBookInfo[i].price));
+            let bookIndex = document.getElementsByClassName('bookList')[listSort].getElementsByTagName('li')[i];
+            bookIndex.getElementsByTagName('img')[0].setAttribute('src', allBookInfo[i].thumbnail);
+            bookIndex.getElementsByTagName('p')[0].innerText = allBookInfo[i].title;
+            bookIndex.getElementsByTagName('p')[1].innerText = allBookInfo[i].publisher;
+            bookIndex.getElementsByTagName('p')[2].innerText = allBookInfo[i].authors;
+            bookIndex.getElementsByTagName('p')[3].innerText = ("￦ " + putCommaInNumber(allBookInfo[i].price));
         }
     });
 }
