@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUKSTOA</title>
+    <!-- 폰트, 아이콘 설정 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/styleCompile.css">
+    <link rel="icon" href="./images/logoRound.png">
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/7b6d17b275.js" crossorigin="anonymous"></script>
+    
+    <!-- Javascript & jQuery -->
+    <!-- <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <script defer src="./scripts/kakaoBookAPIScripts.js"></script>
+    <script defer src="./scripts/commonScripts.js"></script>
+    <script defer src="./scripts/forWireframe.js"></script>
+    <script>
+        window.onload = function(){
+            const urlBigBanner = getkakaoBookURLParameter("한강", "person", undefined, 6);
+            const asyncResult = searchKakaoBookData_async(urlBigBanner);
+            // makePromiseList(asyncResult);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="headerTop">
+            <div class="wrap">
+                <p>지금 가입하시면 문화상품권 10,000원이!</p>
+                <a href="#" class="headerMember"><i class="fa-regular fa-circle-user"></i>    로그인/회원가입</a>
+                <ul class="sns">
+                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                </ul>
+                
+            </div>
+        </div>
+        <div class="headerBottom">
+            <div class="wrap">
+                <img src="./images/logoColor.png">
+                <nav>
+                    <ul class="main">
+                        <li><a href="">인기 도서</a></li>
+                        <li><a href="">신상 도서</a></li>
+                        <li><a href="">도서 검색</a></li>
+                        <li><a href="">eBook</a></li>
+                        <li><a href="">이벤트</a></li>
+                        <li><a href="">블로그</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <p><i class="fa-solid fa-bag-shopping"></i></p>
+            <p><i class="fa-solid fa-magnifying-glass"></i></p>
+            
+            
+        </div>
+            
+        </div>
+    </header>
+    <div id="imgSlide">
+        이미지 슬라이스
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <section>
+        <div class="wrap">
+            <h1>5월 인기 도서</h1>
+            <ul class="bookList">
+                <li>
+                    <img src="" alt="">
+                    <p>책제목</p>
+                    <p>출판사</p>
+                    <p>저자</p>
+                    <p>￦ 10,000</p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+            </ul>
+
+            <ul class="categories">
+                <li>
+                    <a href="#">
+                        <div><img src="" alt=""></div>
+                        자격증
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div><img src="" alt=""></div>
+                        예술
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div><img src="" alt=""></div>
+                        아동
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div><img src="" alt=""></div>
+                        역사
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div><img src="" alt=""></div>
+                        문학
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div><img src="" alt=""></div>
+                        판타지
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div><img src="" alt=""></div>
+                        사회, 종교
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div><img src="" alt=""></div>
+                        과학
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div><img src="" alt=""></div>
+                        기술
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div><img src="" alt=""></div>
+                        정치, 경제
+                    </a>
+                </li>
+            </ul>
+
+            <h1>함께 여행갈래요?</h1>
+            <ul class="bookList">
+                <li>
+                    <img src="" alt="">
+                    <p>책제목</p>
+                    <p>출판사</p>
+                    <p>저자</p>
+                    <p>￦ 10,000</p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </li>
+            </ul>
+        </div>
+        <div id="wideBanner">
+            큰 배너
+        </div>
+    </section>
+    <footer>
+
+    </footer>
+</body>
+</html>
