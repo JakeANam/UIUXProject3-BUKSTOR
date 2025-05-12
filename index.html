@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="./css/styleCompile.css">
-    <link rel="icon" href="./images/logoRound.png">
+    <link rel="icon" href="icons/logoRound.png">
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/7b6d17b275.js" crossorigin="anonymous"></script>
     
@@ -53,12 +53,10 @@
         </div>
         <div class="headerBottom">
             <div class="wrap">
-                <img src="./images/logoColor.png">
+                <a href="./index.html" class="logo">
+                    <img src="./images/logoColor.png">
+                </a>
                 
-                <!-- 장바구니 -->
-                <p><i class="fa-solid fa-bag-shopping"></i></p>
-                <!-- 검색 -->
-                <p><i class="fa-solid fa-magnifying-glass"></i></p>
                 <!-- 헤더 메뉴 -->
                 <nav>
                  
@@ -69,6 +67,16 @@
                         <li><a href="">eBook</a></li>
                         <li><a href="">이벤트</a></li>
                         <li><a href="">블로그</a></li>
+                        <li>
+                            <a href="">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                               <i class="fa-solid fa-bag-shopping"></i>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
 
@@ -92,6 +100,7 @@
     <section>
         <div class="wrap">
             <h1>5월 인기 도서</h1>
+            <p class="bookListLeft">&lt;</p>
             <ul class="bookList">
                 <li>
                     <img src="" alt="">
@@ -164,6 +173,7 @@
                     <p></p>
                 </li>
             </ul>
+            <p class="bookListRight">&gt;</p>
 
             <ul class="categories">
                 <li>
@@ -231,6 +241,8 @@
         <div id="wideBanner">
             큰 배너
         </div>
+
+        <!-- 토픽 메뉴 -->
         <div class="wrap">
             <h1>함께 여행갈래요?</h1>
             <ul class="bookList">
@@ -311,6 +323,7 @@
 
         <div id="event">
             <div class="wrap">
+                <h1>이벤트</h1>
                 <ul>
                     <li>
                         이벤트
@@ -330,6 +343,7 @@
 
         <div id="blog">
             <div class="wrap">
+                <h1>BUKSTOR Blog</h1>
                 <ul>
                     <li>
                         블로그 글
@@ -350,7 +364,14 @@
     </section>
     <footer>
         <div class="wrap">
-            <div class="adress">주소</div>
+            <div class="adress">
+                <ul>
+                    <li>BUKSTOR</li>
+                    <li>충남 아산시 아산로 79</li>
+                    <li>(실옥동 20-48)</li>
+                </ul>
+                
+            </div>
             <ul class="footerMenu">
                 <li><a href="#">도서 검색</a></li>
                 <li><a href="#">e-book</a></li>
@@ -365,7 +386,9 @@
                 <li><a href="#">채용 정보</a></li>
                 <li><a href="#">광고 안내</a></li>
             </ul>
-            <div class="contect">연락처</div>
+            <div class="contect">
+
+            </div>
             <div class="footerBottom">
                 <ul class="sns">
                     <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>

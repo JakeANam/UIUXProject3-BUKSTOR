@@ -16,20 +16,30 @@ a {
 .wrap {
   width: 1200px;
   margin: 0 auto;
+  position: relative;
+}
+
+.wrap::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 header {
   background-color: #ffffff;
   height: 100px;
+  min-width: 1200px;
 }
 header .headerTop {
-  height: 24px;
-  line-height: 24px;
+  height: 25px;
+  line-height: 25px;
   border-bottom: 1px solid #cccccc;
-  font-size: 12px;
+  font-size: 10px;
+  box-sizing: border-box;
 }
 header .headerTop p {
   float: left;
+  font-family: "Nanum Myeongjo", serif;
 }
 header .headerTop a {
   color: #333333;
@@ -49,38 +59,53 @@ header .headerTop .headerMember {
 }
 header .headerBottom {
   width: 100%;
+  min-width: 1200px;
   height: 75px;
   line-height: 75px;
   background-color: inherit;
+  box-sizing: border-box;
+  position: relative;
+  margin: 0 auto;
+  z-index: 1;
+}
+header .headerBottom .logo {
+  display: block;
+  width: 200px;
+  height: 75px;
+  position: absolute;
+  left: 0;
 }
 header .headerBottom img {
   width: 200px;
-  float: left;
   padding: 12.5px 0;
 }
 header .headerBottom nav {
-  float: right;
+  position: absolute;
+  right: 0;
 }
 header .headerBottom nav .main li {
   float: left;
   padding: 0 15px;
+  height: 75px;
 }
 header .headerBottom nav .main li a {
   color: #333333;
   font-family: "Nanum Myeongjo", serif;
   font-weight: bold;
 }
-header .headerBottom nav .main li a:hover {
+header .headerBottom nav .main li:not(:nth-last-of-type(-n+2)) a:hover {
   color: #76323f;
 }
 header p {
   float: right;
-  padding: 0 10px;
+  padding: 0 5px;
 }
 
 #imgSlide {
   background-color: lightgreen;
+  min-width: 1200px;
   height: 650px;
+  margin: 0 auto;
 }
 
 section h1 {
@@ -91,6 +116,9 @@ section h1 {
 
 .bookList {
   background-color: pink;
+  width: 1100px;
+  position: relative;
+  left: 50px;
 }
 .bookList li {
   float: left;
@@ -121,7 +149,7 @@ section h1 {
 }
 
 .categories {
-  margin: 75px 0;
+  margin-top: 75px;
 }
 .categories li {
   float: left;
@@ -129,10 +157,14 @@ section h1 {
   text-align: center;
 }
 .categories li div {
-  background-color: red;
+  background-color: #76323f;
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  margin-bottom: 10px;
+}
+.categories li a {
+  color: #333333;
 }
 
 .categories::after {
@@ -143,29 +175,82 @@ section h1 {
 
 #wideBanner {
   height: 700px;
+  min-width: 1200px;
   background-color: cyan;
-  margin: 75px 0;
+  margin-top: 50px;
+}
+
+#event {
+  margin: 100px 0;
+  width: 100%;
+  min-width: 1200px;
+  background-color: burlywood;
+}
+#event li {
+  background-color: beige;
+  width: 24%;
+  height: 400px;
+  float: left;
+  margin: 0 0.5% 25px;
+}
+
+#blog {
+  width: 100%;
+  min-width: 1200px;
+  background-color: darkgreen;
+}
+#blog li {
+  background-color: lime;
+  width: 49%;
+  height: 120px;
+  float: left;
+  margin: 0 0.5% 25px;
 }
 
 footer {
   background-color: #333333;
   color: #ffffff;
   height: 400px;
+  min-width: 1200px;
+  margin-top: 100px;
 }
 footer .adress {
   width: 30%;
   height: 300px;
   float: left;
+  position: relative;
+}
+footer .adress ul {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  left: 2%;
+  font-size: 30px;
+}
+footer .adress ul li {
   font-family: "Nanum Myeongjo", serif;
+  margin: 5px 0;
+}
+footer .adress ul li:first-child {
+  font-weight: bold;
+  font-size: 45px;
 }
 footer .footerMenu {
   width: 20%;
-  height: 300px;
+  height: 200px;
+  padding: 50px 0;
   float: left;
 }
-footer .footerMenu a {
+footer .footerMenu li {
+  height: 40px;
+  line-height: 40px;
+}
+footer .footerMenu li a {
   color: #ffffff;
   font-family: "Nanum Myeongjo", serif;
+}
+footer .footerMenu li a:hover {
+  font-weight: bold;
 }
 footer .contect {
   width: 30%;
@@ -174,23 +259,49 @@ footer .contect {
   font-family: "Nanum Myeongjo", serif;
 }
 footer .footerBottom {
-  height: 100px;
+  height: 99px;
   clear: both;
+  border-top: 1px solid #f3f0ef;
 }
 footer .footerBottom .sns {
   float: left;
+  margin-left: 5px;
 }
 footer .footerBottom .sns li {
   float: left;
+  margin: 24px 5px 25px;
+  background-color: #ffffff;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 20%;
+}
+footer .footerBottom .sns li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #333333;
+  font-size: 25px;
+}
+footer .footerBottom .sns li:hover {
+  opacity: 0.8;
 }
 footer .footerBottom .copyright {
   float: right;
   text-align: right;
   font-family: "Nanum Myeongjo", serif;
+  padding-top: 24px;
+}
+
+/*
+@media all and (max-width: 1200px) {
+    #imgSlide, header {
+        width: 1200px;
+    }
 }
 
 @media all and (max-width: 1200px) {
-  .wrap {
-    width: 100%;
-  }
+
 }
+*/
