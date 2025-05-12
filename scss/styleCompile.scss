@@ -1,0 +1,374 @@
+@charset "utf-8";
+
+// 컬러 설정
+$violet1: #76323f;
+$violet2: #58252f;
+$black1: #333333;
+$gray1: #f3f0ef;
+$gray2: #cccccc;
+$whitePerfect: #ffffff;
+
+// 폰트 설정
+$fontSerif: 'Nanum Myeongjo', serif;
+$fontSanSerif: '맑은 고딕', sans-serif;
+
+// mixin 생성
+@mixin setAfter {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+// 공통
+* {
+    margin: 0;
+    padding: 0;
+    font-family: $fontSanSerif;
+}
+
+li {
+    list-style: none;
+}
+
+a {text-decoration: none;}
+
+.wrap {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.wrap::after {
+    @include setAfter;
+}
+
+// 헤더
+header {
+    background-color: $whitePerfect;
+    height: 100px;
+    min-width: 1200px;
+
+    .headerTop {
+        height: 25px;
+        line-height: 25px;
+        border-bottom: 1px solid $gray2;
+        font-size: 10px;
+        box-sizing: border-box;
+
+        p{
+            float: left;
+            font-family: $fontSerif;
+        }
+
+        a {
+            color: $black1;
+            padding: 0 5px;
+        }
+        a:hover {
+            color: $violet1;
+        }
+
+        .sns, .headerMember {
+            float: right;
+            li {
+                float: left;
+            }
+        }
+
+        .headerMember {
+            float: right;
+            
+        }
+    }
+    
+    .headerBottom{
+        width: 100%;
+        min-width: 1200px;
+        height: 75px;
+        line-height: 75px;
+        background-color: inherit;
+        box-sizing: border-box;
+        position: relative;
+        margin: 0 auto;
+        z-index: 1;
+        
+        .logo {
+            display: block;
+            width: 200px;
+            height: 75px;
+            position: absolute;
+            left: 0;
+        }
+
+        img {
+            width: 200px;
+            padding: 12.5px 0;
+        }
+
+        nav {
+            position: absolute;
+            right: 0;
+            
+            .main{
+                li {
+                    float: left;
+                    padding: 0 15px;
+                    height: 75px;
+                    a {
+                        color:$black1;
+                        font-family: $fontSerif;
+                        font-weight: bold;
+                    }
+
+                    // :not(:first-child) a:hover {
+                    //     color: $violet1;
+                    // }
+                }
+
+                li:not(:nth-last-of-type(-n+2)) a:hover {
+                    color: $violet1;
+                }
+            }
+
+            // .sub {
+
+            // }
+        }
+    }
+
+    p {
+        float: right;
+        padding: 0 5px;
+    }
+    
+}
+
+// 이미지슬라이드
+#imgSlide{
+    background-color: lightgreen;
+    min-width: 1200px;
+    height: 650px;
+    margin: 0 auto;
+}
+
+// 메인화면 도서 목록
+section h1 {
+    font-family: $fontSerif;
+    margin:75px 0 15px;
+    font-size: 40px;
+}
+
+.bookList {
+    background-color: pink;
+    width: 1100px;
+    position: relative;
+    left: 50px;
+    
+    li {
+        float: left;
+        text-align: center;
+        width: calc(20% - 10px);
+        margin: 5px;
+        height: 440px;
+        padding: 5px 0;
+        background-color: lightcoral;
+
+        img {
+            height: 300px;
+            background-color: lightpink;
+        }
+
+        img, p {
+            width: 90%;
+            margin: 0 5%;
+        }
+
+        p:nth-of-type(1) {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+}
+
+.bookList::after {
+    content: "";
+    clear: left;
+    display: block;
+}
+
+// 카테고리
+.categories {
+    margin-top: 75px;
+    li {
+        float: left;
+        margin: 0 10px;
+        text-align: center;
+        div {
+            background-color: $violet1;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        a {
+            color:$black1;
+        }
+    }
+}
+
+.categories::after {
+    content: "";
+    clear: left;
+    display: block;
+}
+
+// 큰 배너
+#wideBanner {
+    height: 700px;
+    min-width: 1200px;
+    background-color: cyan;
+    margin-top: 50px;
+}
+
+// 이벤트
+#event {
+    margin: 100px 0;
+    width: 100%;
+    min-width: 1200px;
+    background-color: burlywood;
+
+    li {
+            background-color: beige;
+            width: 24%;
+            height: 400px;
+            float: left;
+            margin: 0 0.5% 25px;
+        }
+}
+
+// 블로그
+#blog {
+    width: 100%;
+    min-width: 1200px;
+    background-color: darkgreen;
+
+    li {
+            background-color: lime;
+            width: 49%;
+            height: 120px;
+            float: left;
+            margin: 0 0.5% 25px;
+        }
+}
+
+// 푸터
+footer {
+    background-color: $black1;
+    color: $whitePerfect;
+    height: 400px;
+    min-width: 1200px;
+    margin-top: 100px;
+
+    .adress {
+        width: 30%;
+        height: 300px;
+        float: left;
+        position: relative;
+
+        ul {
+            position: absolute;
+            transform: translateY(-50%);
+            top: 50%;
+            left: 2%;
+            font-size: 30px;
+            
+
+            li {
+                font-family: $fontSerif;
+                margin: 5px 0;
+                &:first-child {
+                    font-weight: bold;
+                    font-size: 45px;
+                    
+                }
+            }
+        }
+    }
+
+    .footerMenu {
+        width: 20%;
+        height: 200px;
+        padding: 50px 0;
+        float: left;
+        
+        li {
+            height: 40px;
+            line-height: 40px;
+            a {
+                color: $whitePerfect;
+                font-family: $fontSerif;
+                &:hover{
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .contect {
+        width: 30%;
+        height: 300px;
+        float: right;
+        font-family: $fontSerif;
+    }
+
+    .footerBottom {
+        height: 99px;
+        clear: both;
+        border-top: 1px solid $gray1;
+
+        .sns {
+            float: left;
+            margin-left: 5px;;
+            li{
+                float: left;
+                margin: 24px 5px 25px;
+                background-color: $whitePerfect;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                border-radius: 20%;
+                a {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    color: $black1;
+                    font-size: 25px;
+                }
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+
+        .copyright{
+            float: right;
+            text-align: right;
+            font-family: $fontSerif;
+            padding-top: 24px
+        }
+    }
+}
+/*
+@media all and (max-width: 1200px) {
+    #imgSlide, header {
+        width: 1200px;
+    }
+}
+
+@media all and (max-width: 1200px) {
+
+}
+*/
