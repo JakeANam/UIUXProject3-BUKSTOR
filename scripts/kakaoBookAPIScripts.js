@@ -4,12 +4,12 @@
 // 상세 내용: https://developers.kakao.com/
 
 /**
- * @summary kakaoBook openAPI URL
+ * @description kakaoBook openAPI URL
  */
 const kakaoBookURL =  "https://dapi.kakao.com/v3/search/book?"
 
 /**
- * @summary kakaoBook URL 검색 내용 생성성
+ * @description kakaoBook URL 검색 내용 생성성
  * @param {string} searchAbout 검색 내용
  * @param {string} searchIn 검색 조건 / title: 제목(기본), isbn: ISBN, publisher: 출판사, person: 인명
  * @param {string} toSort 검색 결과 정렬 순서 / accuracy: 정확도순(기본), latest: 발간일순
@@ -30,7 +30,7 @@ function getkakaoBookURLParameter(searchAbout, searchIn = "title", toSort = "acc
 }
 
 /**
- * @summary async-fetch 방식으로 책 검색 시행, JSON 형태로 결과 출력
+ * @description async-fetch 방식으로 책 검색 시행, JSON 형태로 결과 출력
  * @param {URLSearchParams} kakaoBookParameter 검색 URL 내용
  * @returns {Promise} Promise 형태의 data 
  */
@@ -54,8 +54,9 @@ async function searchKakaoBookData_async(kakaoBookParameter) {
 }
 
 /**
- * @summary Promise 형태의 data를 Object형태로 바꾼 후 main용 list 생성
+ * @description Promise 형태의 data를 Object형태로 바꾼 후 main용 list 생성
  * @param {Promise} originalData Promise 형태의 data
+ * @param {Number} originalData mainpage에서 윗쪽부터 list 순번
  */
 async function mainPromiseList(promiseData, listSort) {
     if (listSort == 'recent') {
@@ -78,7 +79,7 @@ async function mainPromiseList(promiseData, listSort) {
 }
 
 /**
- * @summary 숫자에 , 추가 (ex: 1234500 → 1,234,500)
+ * @description 숫자에 , 추가 (ex: 1234500 → 1,234,500)
  * @param {number} 입력 받은 숫자
  * @returns {string}  ,가 추가된 숫자
  */
@@ -99,6 +100,7 @@ function putCommaInNumber(inputNum){
     return newNum;
 };
 
+/*
 function makeList(ajaxResult){
     const allBookInfo = ajaxResult.documents;
     for(let i in allBookInfo){
@@ -110,3 +112,4 @@ function makeList(ajaxResult){
         bookIndex.children('p:eq(3)').text("￦ " + putCommaInNumber(allBookInfo[i].price));
     }
 }
+*/
