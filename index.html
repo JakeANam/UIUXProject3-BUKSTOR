@@ -14,23 +14,33 @@
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/7b6d17b275.js" crossorigin="anonymous"></script>
     
-    <!-- Javascript & jQuery -->
-    <!-- <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <!-- Javascript -->
     <script defer src="./scripts/kakaoBookAPIScripts.js"></script>
-    <script defer src="./scripts/forWireframe.js"></script>
+    <script defer src="./scripts/mainPage.js"></script>
     <script defer src="./scripts/commonScripts.js"></script>
     <script>
         window.onload = function(){
             mainBookThumbnailResizing();
-            makeMainBookList (0, 10);
-            makeMainBookList (1, 1);
-            // const urlRecent = getkakaoBookURLParameter("오월", undefined, "latest");
-            // const asyncRecent = searchKakaoBookData_async(urlRecent);
-            // mainPromiseList(asyncRecent, 'recent');
 
-            // const urlTopic = getkakaoBookURLParameter("여행");
-            // const asyncTopic = searchKakaoBookData_async(urlTopic);
-            // mainPromiseList(asyncTopic, 'topic');
+            // 첫번째 목록
+            let [needs1,needs2,needs3] = [10,7,20];
+            makeMainBookList (0, needs1);
+            const urlList1 = getkakaoBookURLParameter("오월", undefined, "latest", undefined ,needs1);
+            const asyncList1 = searchKakaoBookData_async(urlList1);
+            mainPromiseList(asyncList1, 0);
+
+            // 두번째 목록
+            makeMainBookList (1, needs2);
+            const urlList2 = getkakaoBookURLParameter("여름",  undefined, undefined, undefined ,needs2);
+            const asyncList2 = searchKakaoBookData_async(urlList2);
+            mainPromiseList(asyncList2, 1);
+
+            // 세번째 목록
+            makeMainBookList (2, needs3);
+            const urlList3 = getkakaoBookURLParameter("여행",  undefined, undefined, undefined ,needs3);
+            const asyncList3 = searchKakaoBookData_async(urlList3);
+            mainPromiseList(asyncList3, 2);
+
 
             // const urlTBigBanner = getkakaoBookURLParameter("한강", "person", undefined, 1);
             // const asyncBigBanner = searchKakaoBookData_async(urlRecent);
@@ -84,13 +94,17 @@
 
                 
             </div>
-            
-            
-            
-        </div>
-            
         </div>
     </header>
+    <div id="searchPopup">
+        
+    </div>
+    <div id="cartPopup">
+        
+    </div>
+    <div id="searchList">
+
+    </div>
     <div id="imgSlide">
         이미지 슬라이스
         <ul>
@@ -103,83 +117,9 @@
         <div class="wrap">
             <h1>5월 인기 도서</h1>
             <div class="bookList">
-            <p class="bookListButton">&lt;</p>
-            <div class="bookListWrap">
-                <ul>
-                    <li>
-                        <img src="" alt="">
-                        <p>책제목</p>
-                        <p>출판사</p>
-                        <p>저자</p>
-                        <p>￦ 10,000</p>
-                    </li>
-                    <li>
-                        <img src="" alt="">
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                    </li>
-                    <li>
-                        <img src="" alt="">
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                    </li>
-                    <li>
-                        <img src="" alt="">
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                    </li>
-                    <li>
-                        <img src="" alt="">
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                    </li>
-                    <li>
-                        <img src="" alt="">
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                    </li>
-                    <li>
-                        <img src="" alt="">
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                    </li>
-                    <li>
-                        <img src="" alt="">
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                    </li>
-                    <li>
-                        <img src="" alt="">
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                    </li>
-                    <li>
-                        <img src="" alt="">
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                    </li>
-                </ul>
-            </div>
-            
-            <p class="bookListButton">&gt;</p>
+                <p class="bookListButton">&lt;</p>
+                <div class="bookListWrap"><ul></ul></div>
+                <p class="bookListButton">&gt;</p>
             </div>
             
             <div class="wrap">
@@ -190,6 +130,7 @@
                 <p class="bookListButton">&gt;</p>
             </div>
 
+            <!-- 토픽 메뉴 -->
             <ul class="categories">
                 <li>
                     <a href="#">
@@ -253,11 +194,21 @@
                 </li>
             </ul>
         </div>
-        <div id="wideBanner">
-            큰 배너
-        </div>
+    </section>
 
-        <!-- 토픽 메뉴 -->
+    <!-- 대형 배너 -->
+    <div id="wideBanner">
+        <div class="wrap">
+            <div class="wideBannerImg">
+                <img src="./images/한강작가.jpg" alt="">
+            </div>
+            <div class="wideBannerTexts">
+
+            </div>
+        </div>
+    </div>
+
+    <section>
         <div class="wrap">
             <h1>함께 여행갈래요?</h1>
             <div class="bookList">
@@ -266,50 +217,72 @@
                 <p class="bookListButton">&gt;</p>
             </div>
         </div>
-
-        
-
-        <div id="event">
-            <div class="wrap">
-                <h1>이벤트</h1>
-                <ul>
-                    <li>
-                        이벤트
-                    </li>
-                    <li>
-                        이벤트
-                    </li>
-                    <li>
-                        이벤트
-                    </li>
-                    <li>
-                        이벤트
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div id="blog">
-            <div class="wrap">
-                <h1>BUKSTOR Blog</h1>
-                <ul>
-                    <li>
-                        블로그 글
-                    </li>
-                    <li>
-                        블로그 글
-                    </li>
-                    <li>
-                        블로그 글
-                    </li>
-                    <li>
-                        블로그 글
-                    </li>
-                </ul>
-            </div>
-        </div>
-        
     </section>
+
+    <!-- 이벤트 -->        
+    <div id="event">
+        <div class="wrap">
+            <h1>이벤트</h1>
+            <ul>
+                <li>
+                    이벤트
+                </li>
+                <li>
+                    이벤트
+                </li>
+                <li>
+                    이벤트
+                </li>
+                <li>
+                    이벤트
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 서점 블로그 -->
+    <div id="blog">
+        <div class="wrap">
+            <h1>BUKSTOR Blog</h1>
+            <ul>
+                
+                <li>
+                    <a href="#">
+                        <div>
+                            <img src="./images/책거치대.jpg" alt="블로그 이미지1">
+                        </div>
+                        <p>2025.05.12</p>
+                        <p>블록으로 만든 책 거치대? 책상위에 나만의 오두막을 만들어보세요.</p>
+                    </a>
+                    
+                </li>
+                <li>
+                    <div>
+                        <img src="./images/고정욱작가.jpg" alt="블로그 이미지2">
+                    </div>
+                    <p>2025.05.09</p>
+                    <p>역사와 문학, 그 만남의 접점에서 『고정욱이 들려주는 역사 한 장면』</p>
+                </li>
+                <li>
+                    <div>
+                        <img src="./images/kidReadingBook.webp" alt="블로그 이미지3">
+                    </div>
+                    <p>2025.05.04</p>
+                    <p>우리 아이 영어 교육, 영어 책은 어떻게 골라야 할까?</p>
+                </li>
+                <li>
+                    <div>
+                        <img src="./images/rowOfBooks.webp" alt="블로그 이미지4">
+                    </div>
+                    <p>2025.05.02</p>
+                    <p>당신만의 책장 정리 방법, 우리에게도 알려주세요!</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+        
+
+    <!-- 푸터 -->
     <footer>
         <div class="wrap">
             <div class="adress">
@@ -338,7 +311,7 @@
                 <p>Tel:</p>
                 <p>041-542-0234</p>
                 <p>Email:</p>
-                <p>inquiry@bUKSTOR.co.kr</p>
+                <p>inquiry@BUKSTOR.co.kr</p>
                 <img src="./images/paypals.jpg">
             </div>
             <div class="footerBottom">

@@ -20,10 +20,11 @@ const kakaoBookURL =  "https://dapi.kakao.com/v3/search/book?"
 function getkakaoBookURLParameter(searchAbout, searchIn = "title", toSort = "accuracy", pageNeed = 1, sizeNeed = 10) {
     const kakaoBookParameter = {
         query: searchAbout,
+        target: searchIn,
         sort: toSort,
         page: pageNeed,
-        size: sizeNeed,
-        target: searchIn
+        size: sizeNeed
+
     };
 
     return kakaoBookParameter;
@@ -59,12 +60,6 @@ async function searchKakaoBookData_async(kakaoBookParameter) {
  * @param {Number} originalData mainpage에서 윗쪽부터 list 순번
  */
 async function mainPromiseList(promiseData, listSort) {
-    if (listSort == 'recent') {
-        listSort = 0;
-    } else {
-        listSort = 1;
-    }
-
     promiseData.then(function(data){
         const allBookInfo = data.documents;
         for(let i in allBookInfo){
