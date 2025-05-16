@@ -107,3 +107,5 @@ function SetAnimationOption(milisecond){
 
     return moveOptions;
 }
+
+document.scrollTop = 0;

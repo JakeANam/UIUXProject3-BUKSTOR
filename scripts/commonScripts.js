@@ -1,33 +1,24 @@
 // 공통 script
 
-fixHeader();
+// 스크롤시 헤더 고정
 function fixHeader(){
-    if (window.scrollY >= 25) {
-        let headerBottom = this.document.getElementsByClassName("headerBottom")[0];
+    let headerBottom = this.document.getElementsByClassName("headerBottom")[0];
+ 
+    if (window.pageYOffset >= 25) {
         headerBottom.style.position = "fixed";
         headerBottom.style.top = '0';
         headerBottom.style.left = (-1 * this.window.scrollX) + "px"
+    }else {
+        headerBottom.style.position = "relative";
     }
 }
 
 
-// 스크롤시 헤더 고정
+fixHeader(); // 첫 화면 헤더 고정
+showBigBannerImg();
 window.addEventListener("scroll", function(){
-    let headerBottom = this.document.getElementsByClassName("headerBottom")[0];
-    
-    if(this.window.scrollY >= 25) {
-        fixHeader();
-        // headerBottom.style.position = "fixed";
-        // headerBottom.style.top = '0';
-        // headerBottom.style.left = (-1 * this.window.scrollX) + "px"
-        //headerBottom.style.left = "50%";
-        //headerBottom.style.transform = "translateX(-50%)"
-    } else {
-        headerBottom.style.position = "relative";
-        headerBottom.style.left = 0;
-        // headerBottom.style.transform = "translateX(0)"
-    }
-
+    fixHeader();
+    showBigBannerImg();
 });
 
 
@@ -45,3 +36,12 @@ window.addEventListener('resize', function(){
     mainBookThumbnailResizing();
 });
 
+function showBigBannerImg() {
+    let wideBanner = document.getElementById("wideBanner");
+    let wideBannerLocationY = wideBanner.getBoundingClientRect().top;
+    // alert("window.pageYOffset: " + window.pageYOffset + "\nwbl: " + wbl)
+    //alert(window.innerHeight > wideBannerLocationY);
+    if (window.innerHeight - 100 > wideBannerLocationY){
+        wideBanner.getElementsByTagName("img")[0].style.opacity = "1";
+    }
+}

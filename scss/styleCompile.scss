@@ -8,6 +8,7 @@ $gray1: #f3f0ef;
 $gray2: #cccccc;
 $gray3: #666666;
 $whitePerfect: #ffffff;
+$bannerYellow: #FED800;
 
 // 폰트 설정
 $fontSerif: 'Nanum Myeongjo', serif;
@@ -24,6 +25,11 @@ $fontSanSerif: '맑은 고딕', sans-serif;
     width: $length;
     height: $length;
     border-radius: $radius;
+}
+
+@mixin alignHorizonalCenter {
+        transform: translateX(-50%);
+        left: 50%;
 }
 
 // 공통
@@ -158,10 +164,48 @@ header {
 
 // 이미지슬라이드
 #imgSlide{
-    background-color: lightgreen;
+    position: relative;
     min-width: 1200px;
     height: 650px;
     margin: 0 auto;
+
+    ul:first-child{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        li {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            &:nth-of-type(1) {
+                background-color: lightgreen;
+            }
+            &:nth-of-type(2) {
+                background-color: yellowgreen;
+            }
+            &:nth-of-type(3) {
+                background-color: green;
+            }
+        }
+    }
+
+    ul:last-child{
+        position: absolute;
+        height: 20px;
+        bottom: 5%;
+        @include alignHorizonalCenter();
+
+        li {
+            box-sizing: border-box;
+            border: 3px solid $whitePerfect;
+            float: left;
+            margin: 0 10px;
+            cursor: pointer;
+            @include makeRoundedSquare(20px, 50%);
+        }
+    }
+   
 }
 
 // 메인화면 도서 목록
@@ -230,7 +274,6 @@ header {
     }
 
     .bookListButton {
-        @include makeRoundedSquare(40px, 50%);
         text-align: center;
         font-size: 30px;
         line-height: 31px;
@@ -241,6 +284,7 @@ header {
         transform: translateY(-50%);
         top: 50%;
         cursor: pointer;
+        @include makeRoundedSquare(40px, 50%);
 
         &:first-of-type {
             left: 5px;
@@ -266,12 +310,12 @@ header {
 
             div {
                 background-color: $violet1;
-                @include makeRoundedSquare(100px, 50%);
                 margin: 0 10px 10px;
                 box-sizing: border-box;
                 border: 5px solid $whitePerfect;
                 transition: 0.5s;
-
+                @include makeRoundedSquare(100px, 50%);
+                
                 img {
                     width: 100%
                 }
@@ -295,10 +339,28 @@ header {
 
 // 큰 배너
 #wideBanner {
-    height: 700px;
+    height: 800px;
     min-width: 1200px;
-    background-color: $gra1;
+    background-color: $gray1;
     margin-top: 50px;
+
+    .wideBannerImg {
+        float:left;
+        width: 510px;
+
+        img {
+            opacity: 0;
+            height: 750px;
+            padding-top: 50px;
+            transition: 1s;
+            display: block;
+        }
+    }
+
+    .wideBannerTexts {
+        float: right;
+        width: calc(100% - 510px);
+    }
 }
 
 // 이벤트
@@ -306,14 +368,39 @@ header {
     margin: 100px 0;
     width: 100%;
     min-width: 1200px;
-    background-color: burlywood;
+    background-color: $gray1;
 
     li {
-            background-color: beige;
             width: 24%;
             height: 400px;
             float: left;
             margin: 0 0.5% 25px;
+
+
+            div {
+                height: 50%;
+
+                &:first-child{
+                    background-color: brown;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%
+                    }
+                }
+
+                &:last-child{
+                    background-color: $whitePerfect;
+                }
+            }
+
+            &:hover {
+                box-shadow: 1px 5px 10px $gray3;
+
+                p:first-child {
+                    color: $violet1;
+                }
+            }
         }
 }
 
@@ -339,10 +426,9 @@ header {
 
             img {
                 position: absolute;
-                transform: translateX(-50%);
-                left: 50%;
                 display: block;
                 height: 100%;
+                @include alignHorizonalCenter();
             }
         }
 
@@ -496,4 +582,19 @@ footer {
             padding-top: 24px
         }
     }
+}
+
+#bookListLayer {
+    display: none;
+    position: fixed;
+    width: 1200px;
+    height: calc(100% - 75px);
+    background-color: dodgerblue;
+    z-index: 1;
+    top: 75px;
+    @include alignHorizonalCenter();
+}
+
+#searchListLayer{
+
 }

@@ -107,10 +107,46 @@ header p {
 }
 
 #imgSlide {
-  background-color: lightgreen;
+  position: relative;
   min-width: 1200px;
   height: 650px;
   margin: 0 auto;
+}
+#imgSlide ul:first-child {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+#imgSlide ul:first-child li {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+#imgSlide ul:first-child li:nth-of-type(1) {
+  background-color: lightgreen;
+}
+#imgSlide ul:first-child li:nth-of-type(2) {
+  background-color: yellowgreen;
+}
+#imgSlide ul:first-child li:nth-of-type(3) {
+  background-color: green;
+}
+#imgSlide ul:last-child {
+  position: absolute;
+  height: 20px;
+  bottom: 5%;
+  transform: translateX(-50%);
+  left: 50%;
+}
+#imgSlide ul:last-child li {
+  box-sizing: border-box;
+  border: 3px solid #ffffff;
+  float: left;
+  margin: 0 10px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
 }
 
 .bookList {
@@ -168,9 +204,6 @@ header p {
   clear: both;
 }
 .bookList .bookListButton {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
   text-align: center;
   font-size: 30px;
   line-height: 31px;
@@ -181,6 +214,9 @@ header p {
   transform: translateY(-50%);
   top: 50%;
   cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 .bookList .bookListButton:first-of-type {
   left: 5px;
@@ -202,13 +238,13 @@ header p {
 }
 .categories li a div {
   background-color: #76323f;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
   margin: 0 10px 10px;
   box-sizing: border-box;
   border: 5px solid #ffffff;
   transition: 0.5s;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 .categories li a div img {
   width: 100%;
@@ -226,24 +262,57 @@ header p {
 }
 
 #wideBanner {
-  height: 700px;
+  height: 800px;
   min-width: 1200px;
-  background-color: cyan;
+  background-color: #f3f0ef;
   margin-top: 50px;
+}
+#wideBanner .wideBannerImg {
+  float: left;
+  width: 510px;
+}
+#wideBanner .wideBannerImg img {
+  opacity: 0;
+  height: 750px;
+  padding-top: 50px;
+  transition: 1s;
+  display: block;
+}
+#wideBanner .wideBannerTexts {
+  float: right;
+  width: calc(100% - 510px);
 }
 
 #event {
   margin: 100px 0;
   width: 100%;
   min-width: 1200px;
-  background-color: burlywood;
+  background-color: #f3f0ef;
 }
 #event li {
-  background-color: beige;
   width: 24%;
   height: 400px;
   float: left;
   margin: 0 0.5% 25px;
+}
+#event li div {
+  height: 50%;
+}
+#event li div:first-child {
+  background-color: brown;
+  overflow: hidden;
+}
+#event li div:first-child img {
+  width: 100%;
+}
+#event li div:last-child {
+  background-color: #ffffff;
+}
+#event li:hover {
+  box-shadow: 1px 5px 10px #666666;
+}
+#event li:hover p:first-child {
+  color: #76323f;
 }
 
 #blog {
@@ -266,10 +335,10 @@ header p {
 }
 #blog li div img {
   position: absolute;
-  transform: translateX(-50%);
-  left: 50%;
   display: block;
   height: 100%;
+  transform: translateX(-50%);
+  left: 50%;
 }
 #blog li p {
   float: right;
@@ -398,4 +467,16 @@ footer .footerBottom .copyright {
   text-align: right;
   font-family: "Nanum Myeongjo", serif;
   padding-top: 24px;
+}
+
+#bookListLayer {
+  display: none;
+  position: fixed;
+  width: 1200px;
+  height: calc(100% - 75px);
+  background-color: dodgerblue;
+  z-index: 1;
+  top: 75px;
+  transform: translateX(-50%);
+  left: 50%;
 }

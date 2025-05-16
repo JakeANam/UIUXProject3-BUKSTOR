@@ -41,9 +41,9 @@
             const asyncList3 = searchKakaoBookData_async(urlList3);
             mainPromiseList(asyncList3, 2);
 
-
-            // const urlTBigBanner = getkakaoBookURLParameter("한강", "person", undefined, 1);
-            // const asyncBigBanner = searchKakaoBookData_async(urlRecent);
+            // 대형 배너 도서
+            const urlTBigBanner = getkakaoBookURLParameter("한강", "person");
+            const asyncBigBanner = searchKakaoBookData_async(urlTBigBanner);
             //mainPromiseList(asyncBigBanner, 'recent');
         }
     </script>
@@ -106,7 +106,20 @@
 
     </div>
     <div id="imgSlide">
-        이미지 슬라이스
+        <!-- 슬라이드 내용 -->
+        <ul>
+            <li>
+
+            </li>
+            <li>
+
+            </li>
+            <li>
+                <h1>올해에는 자격증 따야지!</h1>
+            </li>
+        </ul>
+
+        <!-- 슬라이드 버튼 -->
         <ul>
             <li></li>
             <li></li>
@@ -200,10 +213,14 @@
     <div id="wideBanner">
         <div class="wrap">
             <div class="wideBannerImg">
-                <img src="./images/한강작가.jpg" alt="">
+                <img src="./images/한강작가.png" alt="">
             </div>
             <div class="wideBannerTexts">
-
+                <h1>2024 노벨 문학상 수상자 한강 작가를 소개합니다!</h1>
+                <ul>
+                    <li></li>
+                </ul>
+                <p>작가의 작품 더 보기</p>
             </div>
         </div>
     </div>
@@ -225,16 +242,32 @@
             <h1>이벤트</h1>
             <ul>
                 <li>
-                    이벤트
+                    <div><img src="./images/pileOfBooks.png" alt="이벤트1"></div>
+                    <div>
+                        <p>2030을 위한 북클럽, 여러분도 함께하실래요?</p>
+                        <p>2025.05.16</p>
+                    </div>
                 </li>
                 <li>
-                    이벤트
+                    <div><img src="./images/eBook.png" alt="이벤트2"></div>
+                    <div>
+                        <p></p>
+                        <p>2025.05.16</p>
+                    </div>
                 </li>
                 <li>
-                    이벤트
+                    <div><img src="./images/가족과 책읽기.jpg" alt="이벤트3"></div>
+                    <div>
+                        <p></p>
+                        <p>2025.05.01</p>
+                    </div>
                 </li>
                 <li>
-                    이벤트
+                    <div><img src="./images/대도서관.png" alt="이벤트4"></div>
+                    <div>
+                        <p></p>
+                        <p>2025.04.25</p>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -245,7 +278,6 @@
         <div class="wrap">
             <h1>BUKSTOR Blog</h1>
             <ul>
-                
                 <li>
                     <a href="#">
                         <div>
@@ -327,5 +359,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- 전체 도서 목록 -->
+    <div id="bookListLayer"></div>
+
+    <!-- 검색 도서 목록 -->
+    <div id="searchListLayer"></div>
 </body>
 </html>
