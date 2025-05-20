@@ -24,7 +24,6 @@ function getkakaoBookURLParameter(searchAbout, searchIn = "title", toSort = "acc
         sort: toSort,
         page: pageNeed,
         size: sizeNeed
-
     };
 
     return kakaoBookParameter;
@@ -56,21 +55,72 @@ async function searchKakaoBookData_async(kakaoBookParameter) {
 
 /**
  * @description Promise 형태의 data를 Object형태로 바꾼 후 main용 list 생성
- * @param {Promise} originalData Promise 형태의 data
- * @param {Number} originalData mainpage에서 윗쪽부터 list 순번
+ * @param {Promise} promiseData Promise 형태의 data
+ * @param {Number} listSort mainpage에서 윗쪽부터 list 순번
+ * @param {String} listClass mainpage 목록 종류(className) / 기본값='mainBookList'
  */
-async function mainPromiseList(promiseData, listSort) {
-    promiseData.then(function(data){
+async function mainPromiseList(promiseData, listSort, listClass='mainBookList') {
+    
+    promiseData.then(function(data) {
+        let mainBookList = document.getElementsByClassName(listClass)[listSort].getElementsByTagName("ul")[0];
+        //5개 기준 ul width 100%
+        if (listClass=='mainBookList') {
+            mainBookList.style.width = (20 * data.documents.length) + "%";    
+        }
+
         const allBookInfo = data.documents;
-        for(let i in allBookInfo){
-            let bookIndex = document.getElementsByClassName('bookList')[listSort].getElementsByTagName('li')[i];
-            bookIndex.getElementsByTagName('img')[0].setAttribute('src', allBookInfo[i].thumbnail);
-            bookIndex.getElementsByTagName('p')[0].innerText = allBookInfo[i].title;
-            bookIndex.getElementsByTagName('p')[1].innerText = allBookInfo[i].publisher;
-            bookIndex.getElementsByTagName('p')[2].innerText = allBookInfo[i].authors;
-            bookIndex.getElementsByTagName('p')[3].innerText = ("￦ " + putCommaInNumber(allBookInfo[i].price));
+        for (let i in allBookInfo) {
+            let listIndex = document.createElement("li");
+
+            let bookImg = treatThumbnail(allBookInfo[i].thumbnail, i);
+            listIndex.append(bookImg);
+            let title = document.createElement("p");
+            title.innerText = allBookInfo[i].title;
+
+            if (listClass=='mainBookList') {
+            let publisher = document.createElement("p");
+            publisher.innerText = allBookInfo[i].publisher;
+
+            let authors = document.createElement("p");
+            authors.innerText = allBookInfo[i].authors;
+
+            let price = document.createElement("p");
+            price.innerText = ("￦ " + putCommaInNumber(allBookInfo[i].price));
+
+            listIndex.append(title, publisher, authors, price);
+            }
+            
+            mainBookList.appendChild(listIndex);    
+        }
+
+        if (allBookInfo.length <= 5) {
+        let a = mainBookList.parentNode.parentNode;
+            for (let i of a.childNodes){
+                if (i.innerText == "<" || i.innerText == ">") {
+                    i.style.display = "none";
+                }
+            }
         }
     });
+}
+
+function treatThumbnail(thumbnailURL, thumbnailIndex) {
+    let thumbnail;
+    if (thumbnailURL == '' || thumbnailURL == null) {
+        thumbnail = document.createElement("div");
+        const subLogo = document.createElement("img");
+        const subText = document.createElement("p");
+        subText.innerHTML = "이미지<br>준비중입니다!"
+        subLogo.setAttribute("src", "./icons/logoRound.png");
+        subLogo.setAttribute('alt', '메인도서목록' + (Number(thumbnailIndex) + 1));
+        thumbnail.append(subLogo, subText);
+    } else {
+        thumbnail = document.createElement("img");
+        thumbnail.setAttribute('src', thumbnailURL);
+        thumbnail.setAttribute('alt', '메인도서목록' + (Number(thumbnailIndex) + 1));
+    }
+    
+    return thumbnail;
 }
 
 /**

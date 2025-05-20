@@ -3,19 +3,21 @@
  * @description p요소에 내용 넣어서 생성
  * @param {String} content p요소에 넣을 Text
  */
+/*
 function makePElement(content){
     let pElement = document.createElement("p");
     pElement.appendChild(document.createTextNode(content));
     return pElement;
 }
-
+*/
 /**
  * @description mainpage 도서 목록 생성
  * @param {Number} listIndex mainpage 도서 리스트 번호(맨 위부터 첫번째: 0)
  * @param {Number} booksAmount 도서 리스트에 표시할 도서 수
  */
+/*
 function makeMainBookList (listIndex, booksAmount) {
-    let mainBookList = document.getElementsByClassName("bookList")[listIndex].getElementsByTagName("ul")[0];
+    let mainBookList = document.getElementsByClassName("ookList")[listIndex].getElementsByTagName("ul")[0];
 
     //let listBody = document.createElement
     //5개 기준 ul width 100%
@@ -24,10 +26,16 @@ function makeMainBookList (listIndex, booksAmount) {
         let listIndex = document.createElement("li");
         listIndex.style.width = "210px";
         let bookImg = document.createElement("img");
-        let title = makePElement("책제목");
-        let publisher = makePElement("출판사");
-        let author = makePElement("저자");
-        let price = makePElement("￦ 10,000");
+        bookImg.setAttribute('src', allBookInfo[i].thumbnail);
+        bookImg.setAttribute('alt', '메인도서목록' + (i + 1));
+
+        let title = document.createElement("p");
+
+        let publisher = document.createElement("p");
+        publisher.innerText = allBookInfo[i].authors;
+
+        let author = document.createElement("p");
+        let price = document.createElement("p");
         listIndex.append(bookImg, title, publisher, author, price);
         mainBookList.appendChild(listIndex);
     }
@@ -41,7 +49,7 @@ function makeMainBookList (listIndex, booksAmount) {
         }
     }
 }
-
+*/
 //메인메뉴 도서목록 애니메이션
 let listButton = document.getElementsByClassName("bookListButton");
 for (let i of listButton) {
@@ -61,7 +69,7 @@ for (let i of listButton) {
                 toMoveOut = listBody.childNodes[i].cloneNode(true);
                 listBody.appendChild(toMoveOut);
             }
-
+            
             listBody.style.width = (Number((listBody.style.width).slice(0,-1)) + 100) + "%";
             let animateList = listBody.animate(moveLeft, moveOptions);
             animateList.onfinish = function() {

@@ -32,6 +32,24 @@ $fontSanSerif: '맑은 고딕', sans-serif;
         left: 50%;
 }
 
+@mixin buttonsForBanners {
+    background-color: $violet1;
+    color: $whitePerfect;
+    font-family: $fontSerif;
+    font-size: 25px;
+    font-weight: bold;
+    margin-right: 10px;
+    padding: 8px 23px;
+    border: 2px solid $violet1;
+    box-sizing: border-box;
+    transition: 0.5s;
+
+    &:hover {
+        background-color: $whitePerfect;
+        color: $violet1
+    }
+}
+
 // 공통
 * {
     margin: 0;
@@ -43,7 +61,9 @@ li {
     list-style: none;
 }
 
-a {text-decoration: none;}
+a {
+    text-decoration: none;
+}
 
 .wrap {
     width: 1200px;
@@ -138,20 +158,13 @@ header {
                         font-family: $fontSerif;
                         font-weight: bold;
                     }
-
-                    // :not(:first-child) a:hover {
-                    //     color: $violet1;
-                    // }
                 }
 
                 li:not(:nth-last-of-type(-n+2)) a:hover {
                     color: $violet1;
+                   
                 }
             }
-
-            // .sub {
-
-            // }
         }
     }
 
@@ -163,55 +176,155 @@ header {
 }
 
 // 이미지슬라이드
-#imgSlide{
+swiper-container {
     position: relative;
     min-width: 1200px;
     height: 650px;
     margin: 0 auto;
 
-    ul:first-child{
-        position: absolute;
+    swiper-slide {
         width: 100%;
         height: 100%;
 
-        li {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            &:nth-of-type(1) {
-                background-color: lightgreen;
+        &:nth-of-type(1){
+            background: url('../images/globe.jpg');
+            background-size: cover;
+
+            h1 {
+                color: $whitePerfect;
+                position: relative;
+                left: calc(50% - 590px);
             }
-            &:nth-of-type(2) {
-                background-color: yellowgreen;
+
+            img {
+                width: 250px;
+                height: 375px;
+                display: block;
+                position: absolute;
+                left: 40%;
+                top: 25%;
+                box-shadow: 0 0 8px;
+
+                &:nth-of-type(2) {
+                    left: 55%;
+                    top: 30%;
+                    background-color: #b00;
+                }
+
+                &:nth-of-type(3) {
+                    left: 70%;
+                    top: 35%
+                }
             }
-            &:nth-of-type(3) {
-                background-color: green;
+
+            a {
+                    display: block;
+                    position: absolute;
+                    left: 12%;
+                    bottom: 25%;
+                    float: right;
+                    @include buttonsForBanners();
+                }
+        }
+        &:nth-of-type(2){
+            background-color: $bannerYellow;
+            text-align: center;
+            overflow: hidden;
+            h1 {
+                font-family: $fontSanSerif;
+                font-weight: bolder;
+                font-size: 45px;
+            }
+            div>img {
+                display: block;
+                position: absolute;
+                @include alignHorizonalCenter();
+                    &:first-of-type {
+                        left: calc(50% - 300px);
+                        bottom: 0;
+                        height: 80%
+                    }
+
+                    &:last-of-type {
+                        left: calc(50% + 200px);
+                        height: 50%;
+                    }
+                }
+
+                p {
+                    position: absolute;
+                    left: 46%;
+                    font-family: $fontSerif;
+                    font-weight: bold;
+                    font-size: 30px;
+                    bottom: 20%;
+                    color: $violet1;
+                }
+
+                a {
+                    display: block;
+                    position: absolute;
+                    left: 46%;
+                    bottom: 12%;
+                    float: right;
+                    @include buttonsForBanners();
+                }
+        }
+
+        &:nth-of-type(3){
+            background-color: lightblue;
+
+            h1  {
+                position: relative;
+                left: calc(50% - 590px);
+            }
+
+            ul {
+                width: 1200px;
+                height: 300px;
+                position: absolute;
+                @include alignHorizonalCenter();
+
+                li {
+                    position: relative;
+                    width: 180px;
+                    height: 270px;
+                    margin: 10px;
+                    float: left;
+
+                    img {
+                        display: block;
+                        height: 100%;
+                    }
+
+                    div{
+                        p {
+                            position: relative;
+                        }
+                        height: 100%;
+                        img {
+                            position: relative;
+                            width: 50px;
+                        }
+                    }
+                }
+
+                &::after {
+                    @include setAfter()
+                }
+            }
+
+            a {
+                position: absolute;
+                bottom: 10%;
+                @include buttonsForBanners();
+                @include alignHorizonalCenter();
             }
         }
-    }
-
-    ul:last-child{
-        position: absolute;
-        height: 20px;
-        bottom: 5%;
-        @include alignHorizonalCenter();
-
-        li {
-            box-sizing: border-box;
-            border: 3px solid $whitePerfect;
-            float: left;
-            margin: 0 10px;
-            cursor: pointer;
-            @include makeRoundedSquare(20px, 50%);
-        }
-    }
-   
+    }   
 }
 
-// 메인화면 도서 목록
-
-
-.bookList {
+.mainBookList {
     position: relative;
     height: 450px;
 
@@ -230,17 +343,36 @@ header {
             li {
                 float: left;
                 text-align: center;
+                width: 210px;
                 height: calc(100% - 20px);
                 margin: 5px;
                 padding: 5px 0;
                 cursor: pointer;
 
+                div {
+                    width: 190px;
+                    height: calc(190px * 1.5); 
+                    color: $whitePerfect;
+                    background-color: $violet2;
+                    box-shadow: 0px 1px 2px $gray3;
+                    margin-bottom: 20px;
+
+                    img {
+                        width: 75px;
+                        height: 75px;
+                        background-color: $whitePerfect;
+                        margin: 25px 0;
+                    }
+                }
+
                 img {
+                    width: 190px;
                     height: calc(190px * 1.5);
+                    margin-bottom: 20px;
                     box-shadow: 0px 1px 2px $gray3;
                 }
 
-                img, p {
+                p {
                     width: 90%;
                     margin: 0 5% 2%;
                 }
@@ -262,7 +394,8 @@ header {
                     color: $violet1;
                 }
 
-                &:hover img {
+                &:hover img,
+                &:hover div {
                     box-shadow: 1px 5px 10px $gray3;
                 }
             }
@@ -360,6 +493,40 @@ header {
     .wideBannerTexts {
         float: right;
         width: calc(100% - 510px);
+
+        ul {
+            width: 630px;
+            margin-left: 60px;
+            float: right;
+
+            li {
+                width: 135px;
+                margin-right: 30px;
+                margin-bottom: 30px;
+                background-color: blue;
+                float: left;
+                box-shadow: 0 0 8px;
+
+                &:nth-of-type(4n){
+                    margin-right: 0;
+                }
+
+                img {
+                    width: 100%;
+                    display: block;
+                }
+            }
+
+            &::after {
+                @include setAfter()
+            }
+        }
+
+        a {
+            float: right;
+            @include buttonsForBanners();
+        }
+        
     }
 }
 
@@ -376,21 +543,29 @@ header {
             float: left;
             margin: 0 0.5% 25px;
 
-
             div {
                 height: 50%;
-
                 &:first-child{
-                    background-color: brown;
                     overflow: hidden;
-
                     img {
-                        width: 100%
+                        width: 105%;
+                        display: block;
+                        position: relative;
+                        @include alignHorizonalCenter();
                     }
                 }
 
                 &:last-child{
                     background-color: $whitePerfect;
+                    box-sizing: border-box;
+                    padding: 20px;
+
+                    p:first-child {
+                        font-family: $fontSerif;
+                        font-size: 20px;
+                        font-weight: bold;
+                        transition: 0.5s;
+                    }
                 }
             }
 

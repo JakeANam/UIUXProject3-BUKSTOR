@@ -106,104 +106,252 @@ header p {
   padding: 0 5px;
 }
 
-#imgSlide {
+swiper-container {
   position: relative;
   min-width: 1200px;
   height: 650px;
   margin: 0 auto;
 }
-#imgSlide ul:first-child {
-  position: absolute;
+swiper-container swiper-slide {
   width: 100%;
   height: 100%;
 }
-#imgSlide ul:first-child li {
-  width: 100%;
-  height: 100%;
+swiper-container swiper-slide:nth-of-type(1) {
+  background: url("../images/globe.jpg");
+  background-size: cover;
+}
+swiper-container swiper-slide:nth-of-type(1) h1 {
+  color: #ffffff;
+  position: relative;
+  left: calc(50% - 590px);
+}
+swiper-container swiper-slide:nth-of-type(1) img {
+  width: 250px;
+  height: 375px;
+  display: block;
   position: absolute;
+  left: 40%;
+  top: 25%;
+  box-shadow: 0 0 8px;
 }
-#imgSlide ul:first-child li:nth-of-type(1) {
-  background-color: lightgreen;
+swiper-container swiper-slide:nth-of-type(1) img:nth-of-type(2) {
+  left: 55%;
+  top: 30%;
+  background-color: #b00;
 }
-#imgSlide ul:first-child li:nth-of-type(2) {
-  background-color: yellowgreen;
+swiper-container swiper-slide:nth-of-type(1) img:nth-of-type(3) {
+  left: 70%;
+  top: 35%;
 }
-#imgSlide ul:first-child li:nth-of-type(3) {
-  background-color: green;
-}
-#imgSlide ul:last-child {
+swiper-container swiper-slide:nth-of-type(1) a {
+  display: block;
   position: absolute;
-  height: 20px;
-  bottom: 5%;
+  left: 12%;
+  bottom: 25%;
+  float: right;
+  background-color: #76323f;
+  color: #ffffff;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 8px 23px;
+  border: 2px solid #76323f;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+swiper-container swiper-slide:nth-of-type(1) a:hover {
+  background-color: #ffffff;
+  color: #76323f;
+}
+swiper-container swiper-slide:nth-of-type(2) {
+  background-color: #FED800;
+  text-align: center;
+  overflow: hidden;
+}
+swiper-container swiper-slide:nth-of-type(2) h1 {
+  font-family: "맑은 고딕", sans-serif;
+  font-weight: bolder;
+  font-size: 45px;
+}
+swiper-container swiper-slide:nth-of-type(2) div > img {
+  display: block;
+  position: absolute;
   transform: translateX(-50%);
   left: 50%;
 }
-#imgSlide ul:last-child li {
+swiper-container swiper-slide:nth-of-type(2) div > img:first-of-type {
+  left: calc(50% - 300px);
+  bottom: 0;
+  height: 80%;
+}
+swiper-container swiper-slide:nth-of-type(2) div > img:last-of-type {
+  left: calc(50% + 200px);
+  height: 50%;
+}
+swiper-container swiper-slide:nth-of-type(2) p {
+  position: absolute;
+  left: 46%;
+  font-family: "Nanum Myeongjo", serif;
+  font-weight: bold;
+  font-size: 30px;
+  bottom: 20%;
+  color: #76323f;
+}
+swiper-container swiper-slide:nth-of-type(2) a {
+  display: block;
+  position: absolute;
+  left: 46%;
+  bottom: 12%;
+  float: right;
+  background-color: #76323f;
+  color: #ffffff;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 8px 23px;
+  border: 2px solid #76323f;
   box-sizing: border-box;
-  border: 3px solid #ffffff;
+  transition: 0.5s;
+}
+swiper-container swiper-slide:nth-of-type(2) a:hover {
+  background-color: #ffffff;
+  color: #76323f;
+}
+swiper-container swiper-slide:nth-of-type(3) {
+  background-color: lightblue;
+}
+swiper-container swiper-slide:nth-of-type(3) h1 {
+  position: relative;
+  left: calc(50% - 590px);
+}
+swiper-container swiper-slide:nth-of-type(3) ul {
+  width: 1200px;
+  height: 300px;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+}
+swiper-container swiper-slide:nth-of-type(3) ul li {
+  position: relative;
+  width: 180px;
+  height: 270px;
+  margin: 10px;
   float: left;
-  margin: 0 10px;
-  cursor: pointer;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+}
+swiper-container swiper-slide:nth-of-type(3) ul li img {
+  display: block;
+  height: 100%;
+}
+swiper-container swiper-slide:nth-of-type(3) ul li div {
+  height: 100%;
+}
+swiper-container swiper-slide:nth-of-type(3) ul li div p {
+  position: relative;
+}
+swiper-container swiper-slide:nth-of-type(3) ul li div img {
+  position: relative;
+  width: 50px;
+}
+swiper-container swiper-slide:nth-of-type(3) ul::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+swiper-container swiper-slide:nth-of-type(3) a {
+  position: absolute;
+  bottom: 10%;
+  background-color: #76323f;
+  color: #ffffff;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 8px 23px;
+  border: 2px solid #76323f;
+  box-sizing: border-box;
+  transition: 0.5s;
+  transform: translateX(-50%);
+  left: 50%;
+}
+swiper-container swiper-slide:nth-of-type(3) a:hover {
+  background-color: #ffffff;
+  color: #76323f;
 }
 
-.bookList {
+.mainBookList {
   position: relative;
   height: 450px;
 }
-.bookList .bookListWrap {
+.mainBookList .bookListWrap {
   width: 1100px;
   height: 100%;
   position: absolute;
   left: 50px;
   overflow: hidden;
 }
-.bookList .bookListWrap ul {
+.mainBookList .bookListWrap ul {
   margin: 0 auto;
   position: relative;
   height: 100%;
 }
-.bookList .bookListWrap ul li {
+.mainBookList .bookListWrap ul li {
   float: left;
   text-align: center;
+  width: 210px;
   height: calc(100% - 20px);
   margin: 5px;
   padding: 5px 0;
   cursor: pointer;
 }
-.bookList .bookListWrap ul li img {
+.mainBookList .bookListWrap ul li div {
+  width: 190px;
   height: 285px;
+  color: #ffffff;
+  background-color: #58252f;
+  box-shadow: 0px 1px 2px #666666;
+  margin-bottom: 20px;
+}
+.mainBookList .bookListWrap ul li div img {
+  width: 75px;
+  height: 75px;
+  background-color: #ffffff;
+  margin: 25px 0;
+}
+.mainBookList .bookListWrap ul li img {
+  width: 190px;
+  height: 285px;
+  margin-bottom: 20px;
   box-shadow: 0px 1px 2px #666666;
 }
-.bookList .bookListWrap ul li img, .bookList .bookListWrap ul li p {
+.mainBookList .bookListWrap ul li p {
   width: 90%;
   margin: 0 5% 2%;
 }
-.bookList .bookListWrap ul li p:nth-of-type(1) {
+.mainBookList .bookListWrap ul li p:nth-of-type(1) {
   font-size: 23px;
   font-weight: bold;
   font-family: "Nanum Myeongjo", serif;
 }
-.bookList .bookListWrap ul li p:nth-of-type(2), .bookList .bookListWrap ul li p:nth-of-type(3) {
+.mainBookList .bookListWrap ul li p:nth-of-type(2), .mainBookList .bookListWrap ul li p:nth-of-type(3) {
   font-size: 12px;
 }
-.bookList .bookListWrap ul li p:nth-of-type(4) {
+.mainBookList .bookListWrap ul li p:nth-of-type(4) {
   font-size: 20px;
   font-weight: bold;
   font-family: "Nanum Myeongjo", serif;
   color: #76323f;
 }
-.bookList .bookListWrap ul li:hover img {
+.mainBookList .bookListWrap ul li:hover img, .mainBookList .bookListWrap ul li:hover div {
   box-shadow: 1px 5px 10px #666666;
 }
-.bookList .bookListWrap ul::after {
+.mainBookList .bookListWrap ul::after {
   content: "";
   display: block;
   clear: both;
 }
-.bookList .bookListButton {
+.mainBookList .bookListButton {
   text-align: center;
   font-size: 30px;
   line-height: 31px;
@@ -218,10 +366,10 @@ header p {
   height: 40px;
   border-radius: 50%;
 }
-.bookList .bookListButton:first-of-type {
+.mainBookList .bookListButton:first-of-type {
   left: 5px;
 }
-.bookList .bookListButton:last-of-type {
+.mainBookList .bookListButton:last-of-type {
   right: 5px;
 }
 
@@ -282,6 +430,48 @@ header p {
   float: right;
   width: calc(100% - 510px);
 }
+#wideBanner .wideBannerTexts ul {
+  width: 630px;
+  margin-left: 60px;
+  float: right;
+}
+#wideBanner .wideBannerTexts ul li {
+  width: 135px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  background-color: blue;
+  float: left;
+  box-shadow: 0 0 8px;
+}
+#wideBanner .wideBannerTexts ul li:nth-of-type(4n) {
+  margin-right: 0;
+}
+#wideBanner .wideBannerTexts ul li img {
+  width: 100%;
+  display: block;
+}
+#wideBanner .wideBannerTexts ul::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+#wideBanner .wideBannerTexts a {
+  float: right;
+  background-color: #76323f;
+  color: #ffffff;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 8px 23px;
+  border: 2px solid #76323f;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+#wideBanner .wideBannerTexts a:hover {
+  background-color: #ffffff;
+  color: #76323f;
+}
 
 #event {
   margin: 100px 0;
@@ -299,14 +489,25 @@ header p {
   height: 50%;
 }
 #event li div:first-child {
-  background-color: brown;
   overflow: hidden;
 }
 #event li div:first-child img {
-  width: 100%;
+  width: 105%;
+  display: block;
+  position: relative;
+  transform: translateX(-50%);
+  left: 50%;
 }
 #event li div:last-child {
   background-color: #ffffff;
+  box-sizing: border-box;
+  padding: 20px;
+}
+#event li div:last-child p:first-child {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 20px;
+  font-weight: bold;
+  transition: 0.5s;
 }
 #event li:hover {
   box-shadow: 1px 5px 10px #666666;
