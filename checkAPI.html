@@ -9,9 +9,10 @@
     <title>Document</title>
      <script>
         window.onload = function(){
-            const urlList1 = getkakaoBookURLParameter("hsk", undefined, "latest", undefined, 10);
+            const urlList1 = getkakaoBookURLParameter("MOS", undefined, undefined, undefined, 20);
             const asyncList1 = searchKakaoBookData_async(urlList1);
             mainPromiseList(asyncList1, 0);
+            console.log(asyncList1);
 
         }
     </script>

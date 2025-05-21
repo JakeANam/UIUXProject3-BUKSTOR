@@ -11,6 +11,7 @@ li {
 
 a {
   text-decoration: none;
+  color: #333333;
 }
 
 .wrap {
@@ -47,7 +48,6 @@ header .headerTop p {
   font-family: "Nanum Myeongjo", serif;
 }
 header .headerTop a {
-  color: #333333;
   padding: 0 5px;
 }
 header .headerTop a:hover {
@@ -106,49 +106,170 @@ header p {
   padding: 0 5px;
 }
 
-swiper-container {
+footer {
+  background-color: #333333;
+  color: #ffffff;
+  height: 400px;
+  min-width: 1200px;
+  margin-top: 100px;
+}
+footer .adress {
+  width: 30%;
+  height: 300px;
+  float: left;
   position: relative;
+}
+footer .adress ul {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  left: 2%;
+  font-size: 30px;
+}
+footer .adress ul li {
+  font-family: "Nanum Myeongjo", serif;
+  margin: 5px 0;
+}
+footer .adress ul li:first-child {
+  font-weight: bold;
+  font-size: 45px;
+}
+footer .footerMenu {
+  width: 20%;
+  height: 220px;
+  padding: 40px 0;
+  float: left;
+}
+footer .footerMenu li {
+  height: 44px;
+  line-height: 44px;
+}
+footer .footerMenu li a {
+  color: #ffffff;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 20px;
+}
+footer .footerMenu li a:hover {
+  font-weight: bold;
+}
+footer .contect {
+  width: 30%;
+  height: 200px;
+  padding: 40px 0;
+  float: right;
+}
+footer .contect p {
+  padding: 2px 0;
+  font-family: "Nanum Myeongjo", serif;
+}
+footer .contect p:nth-of-type(odd) {
+  font-weight: bold;
+  font-size: 25px;
+}
+footer .contect p:nth-of-type(even) {
+  font-size: 20px;
+}
+footer .contect img {
+  display: block;
+  width: 250px;
+  margin: 10px auto 0;
+}
+footer .footerBottom {
+  height: 99px;
+  clear: both;
+  border-top: 1px solid #f3f0ef;
+}
+footer .footerBottom .sns {
+  float: left;
+  margin-left: 5px;
+}
+footer .footerBottom .sns li {
+  float: left;
+  margin: 24px 5px 25px;
+  background-color: #ffffff;
+  width: 50px;
+  height: 50px;
+  border-radius: 20%;
+  line-height: 50px;
+  text-align: center;
+}
+footer .footerBottom .sns li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 25px;
+}
+footer .footerBottom .sns li:hover {
+  opacity: 0.8;
+}
+footer .footerBottom .copyright {
+  float: right;
+  text-align: right;
+  font-family: "Nanum Myeongjo", serif;
+  padding-top: 24px;
+}
+
+#bookListLayer {
+  display: none;
+  position: fixed;
+  width: 1200px;
+  height: calc(100% - 75px);
+  background-color: dodgerblue;
+  z-index: 1;
+  top: 75px;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+.swiper {
   min-width: 1200px;
   height: 650px;
   margin: 0 auto;
 }
-swiper-container swiper-slide {
+
+.swiper-slide {
   width: 100%;
   height: 100%;
 }
-swiper-container swiper-slide:nth-of-type(1) {
+.swiper-slide:nth-of-type(1) {
   background: url("../images/globe.jpg");
   background-size: cover;
 }
-swiper-container swiper-slide:nth-of-type(1) h1 {
+.swiper-slide:nth-of-type(1) h1 {
   color: #ffffff;
   position: relative;
   left: calc(50% - 590px);
 }
-swiper-container swiper-slide:nth-of-type(1) img {
+.swiper-slide:nth-of-type(1) .slideImgWrap {
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  left: 45%;
+}
+.swiper-slide:nth-of-type(1) .slideImgWrap img {
   width: 250px;
   height: 375px;
   display: block;
   position: absolute;
-  left: 40%;
-  top: 25%;
+  left: 0%;
+  top: 10%;
   box-shadow: 0 0 8px;
 }
-swiper-container swiper-slide:nth-of-type(1) img:nth-of-type(2) {
-  left: 55%;
+.swiper-slide:nth-of-type(1) .slideImgWrap img:nth-of-type(2) {
+  left: 25%;
+  top: 20%;
+}
+.swiper-slide:nth-of-type(1) .slideImgWrap img:nth-of-type(3) {
+  left: 50%;
   top: 30%;
-  background-color: #b00;
 }
-swiper-container swiper-slide:nth-of-type(1) img:nth-of-type(3) {
-  left: 70%;
-  top: 35%;
-}
-swiper-container swiper-slide:nth-of-type(1) a {
+.swiper-slide:nth-of-type(1) a {
   display: block;
   position: absolute;
-  left: 12%;
+  left: calc(50% - 450px);
   bottom: 25%;
   float: right;
+  transform: translateX(-50%);
   background-color: #76323f;
   color: #ffffff;
   font-family: "Nanum Myeongjo", serif;
@@ -160,49 +281,52 @@ swiper-container swiper-slide:nth-of-type(1) a {
   box-sizing: border-box;
   transition: 0.5s;
 }
-swiper-container swiper-slide:nth-of-type(1) a:hover {
+.swiper-slide:nth-of-type(1) a:hover {
   background-color: #ffffff;
   color: #76323f;
 }
-swiper-container swiper-slide:nth-of-type(2) {
+.swiper-slide:nth-of-type(2) {
   background-color: #FED800;
   text-align: center;
   overflow: hidden;
 }
-swiper-container swiper-slide:nth-of-type(2) h1 {
+.swiper-slide:nth-of-type(2) h1 {
   font-family: "맑은 고딕", sans-serif;
   font-weight: bolder;
   font-size: 45px;
 }
-swiper-container swiper-slide:nth-of-type(2) div > img {
+.swiper-slide:nth-of-type(2) div > img {
   display: block;
   position: absolute;
   transform: translateX(-50%);
   left: 50%;
 }
-swiper-container swiper-slide:nth-of-type(2) div > img:first-of-type {
+.swiper-slide:nth-of-type(2) div > img:first-of-type {
   left: calc(50% - 300px);
   bottom: 0;
   height: 80%;
 }
-swiper-container swiper-slide:nth-of-type(2) div > img:last-of-type {
+.swiper-slide:nth-of-type(2) div > img:last-of-type {
   left: calc(50% + 200px);
+  box-sizing: border-box;
   height: 50%;
+  border: 20px ridge #76323f;
+  top: 22%;
 }
-swiper-container swiper-slide:nth-of-type(2) p {
+.swiper-slide:nth-of-type(2) p {
   position: absolute;
-  left: 46%;
+  left: 48%;
   font-family: "Nanum Myeongjo", serif;
   font-weight: bold;
   font-size: 30px;
-  bottom: 20%;
+  bottom: 18.5%;
   color: #76323f;
 }
-swiper-container swiper-slide:nth-of-type(2) a {
+.swiper-slide:nth-of-type(2) a {
   display: block;
   position: absolute;
-  left: 46%;
-  bottom: 12%;
+  left: 48%;
+  bottom: 10%;
   float: right;
   background-color: #76323f;
   color: #ffffff;
@@ -215,51 +339,39 @@ swiper-container swiper-slide:nth-of-type(2) a {
   box-sizing: border-box;
   transition: 0.5s;
 }
-swiper-container swiper-slide:nth-of-type(2) a:hover {
+.swiper-slide:nth-of-type(2) a:hover {
   background-color: #ffffff;
   color: #76323f;
 }
-swiper-container swiper-slide:nth-of-type(3) {
+.swiper-slide:nth-of-type(3) {
   background-color: lightblue;
 }
-swiper-container swiper-slide:nth-of-type(3) h1 {
+.swiper-slide:nth-of-type(3) h1 {
   position: relative;
   left: calc(50% - 590px);
 }
-swiper-container swiper-slide:nth-of-type(3) ul {
+.swiper-slide:nth-of-type(3) div {
   width: 1200px;
   height: 300px;
   position: absolute;
   transform: translateX(-50%);
   left: 50%;
 }
-swiper-container swiper-slide:nth-of-type(3) ul li {
+.swiper-slide:nth-of-type(3) div img {
   position: relative;
   width: 180px;
   height: 270px;
   margin: 10px;
   float: left;
-}
-swiper-container swiper-slide:nth-of-type(3) ul li img {
   display: block;
   height: 100%;
 }
-swiper-container swiper-slide:nth-of-type(3) ul li div {
-  height: 100%;
-}
-swiper-container swiper-slide:nth-of-type(3) ul li div p {
-  position: relative;
-}
-swiper-container swiper-slide:nth-of-type(3) ul li div img {
-  position: relative;
-  width: 50px;
-}
-swiper-container swiper-slide:nth-of-type(3) ul::after {
+.swiper-slide:nth-of-type(3) div::after {
   content: "";
   display: block;
   clear: both;
 }
-swiper-container swiper-slide:nth-of-type(3) a {
+.swiper-slide:nth-of-type(3) a {
   position: absolute;
   bottom: 10%;
   background-color: #76323f;
@@ -275,9 +387,19 @@ swiper-container swiper-slide:nth-of-type(3) a {
   transform: translateX(-50%);
   left: 50%;
 }
-swiper-container swiper-slide:nth-of-type(3) a:hover {
+.swiper-slide:nth-of-type(3) a:hover {
   background-color: #ffffff;
   color: #76323f;
+}
+
+.swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+  background-color: white;
+  opacity: 1;
+}
+.swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active,
+.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: red;
 }
 
 .mainBookList {
@@ -324,6 +446,7 @@ swiper-container swiper-slide:nth-of-type(3) a:hover {
   height: 285px;
   margin-bottom: 20px;
   box-shadow: 0px 1px 2px #666666;
+  transition: 0.5s;
 }
 .mainBookList .bookListWrap ul li p {
   width: 90%;
@@ -333,6 +456,7 @@ swiper-container swiper-slide:nth-of-type(3) a:hover {
   font-size: 23px;
   font-weight: bold;
   font-family: "Nanum Myeongjo", serif;
+  transition: 0.5s;
 }
 .mainBookList .bookListWrap ul li p:nth-of-type(2), .mainBookList .bookListWrap ul li p:nth-of-type(3) {
   font-size: 12px;
@@ -345,6 +469,15 @@ swiper-container swiper-slide:nth-of-type(3) a:hover {
 }
 .mainBookList .bookListWrap ul li:hover img, .mainBookList .bookListWrap ul li:hover div {
   box-shadow: 1px 5px 10px #666666;
+}
+.mainBookList .bookListWrap ul li:hover p:nth-of-type(1) {
+  color: #76323f;
+}
+.mainBookList .bookListWrap ul li:hover img, .mainBookList .bookListWrap ul li:hover div {
+  box-shadow: 1px 5px 10px #666666;
+}
+.mainBookList .bookListWrap ul li:hover p:nth-of-type(1) {
+  color: #76323f;
 }
 .mainBookList .bookListWrap ul::after {
   content: "";
@@ -430,27 +563,24 @@ swiper-container swiper-slide:nth-of-type(3) a:hover {
   float: right;
   width: calc(100% - 510px);
 }
-#wideBanner .wideBannerTexts ul {
+#wideBanner .wideBannerTexts div {
   width: 630px;
   margin-left: 60px;
   float: right;
 }
-#wideBanner .wideBannerTexts ul li {
+#wideBanner .wideBannerTexts div img {
   width: 135px;
   margin-right: 30px;
   margin-bottom: 30px;
   background-color: blue;
   float: left;
   box-shadow: 0 0 8px;
-}
-#wideBanner .wideBannerTexts ul li:nth-of-type(4n) {
-  margin-right: 0;
-}
-#wideBanner .wideBannerTexts ul li img {
-  width: 100%;
   display: block;
 }
-#wideBanner .wideBannerTexts ul::after {
+#wideBanner .wideBannerTexts div img:nth-of-type(4n) {
+  margin-right: 0;
+}
+#wideBanner .wideBannerTexts div::after {
   content: "";
   display: block;
   clear: both;
@@ -564,120 +694,4 @@ swiper-container swiper-slide:nth-of-type(3) a:hover {
 }
 #blog li:hover p:last-of-type {
   color: #76323f;
-}
-
-footer {
-  background-color: #333333;
-  color: #ffffff;
-  height: 400px;
-  min-width: 1200px;
-  margin-top: 100px;
-}
-footer .adress {
-  width: 30%;
-  height: 300px;
-  float: left;
-  position: relative;
-}
-footer .adress ul {
-  position: absolute;
-  transform: translateY(-50%);
-  top: 50%;
-  left: 2%;
-  font-size: 30px;
-}
-footer .adress ul li {
-  font-family: "Nanum Myeongjo", serif;
-  margin: 5px 0;
-}
-footer .adress ul li:first-child {
-  font-weight: bold;
-  font-size: 45px;
-}
-footer .footerMenu {
-  width: 20%;
-  height: 220px;
-  padding: 40px 0;
-  float: left;
-}
-footer .footerMenu li {
-  height: 44px;
-  line-height: 44px;
-}
-footer .footerMenu li a {
-  color: #ffffff;
-  font-family: "Nanum Myeongjo", serif;
-  font-size: 20px;
-}
-footer .footerMenu li a:hover {
-  font-weight: bold;
-}
-footer .contect {
-  width: 30%;
-  height: 200px;
-  padding: 40px 0;
-  float: right;
-}
-footer .contect p {
-  padding: 2px 0;
-  font-family: "Nanum Myeongjo", serif;
-}
-footer .contect p:nth-of-type(odd) {
-  font-weight: bold;
-  font-size: 25px;
-}
-footer .contect p:nth-of-type(even) {
-  font-size: 20px;
-}
-footer .contect img {
-  display: block;
-  width: 250px;
-  margin: 10px auto 0;
-}
-footer .footerBottom {
-  height: 99px;
-  clear: both;
-  border-top: 1px solid #f3f0ef;
-}
-footer .footerBottom .sns {
-  float: left;
-  margin-left: 5px;
-}
-footer .footerBottom .sns li {
-  float: left;
-  margin: 24px 5px 25px;
-  background-color: #ffffff;
-  width: 50px;
-  height: 50px;
-  border-radius: 20%;
-  line-height: 50px;
-  text-align: center;
-}
-footer .footerBottom .sns li a {
-  display: block;
-  width: 100%;
-  height: 100%;
-  color: #333333;
-  font-size: 25px;
-}
-footer .footerBottom .sns li:hover {
-  opacity: 0.8;
-}
-footer .footerBottom .copyright {
-  float: right;
-  text-align: right;
-  font-family: "Nanum Myeongjo", serif;
-  padding-top: 24px;
-}
-
-#bookListLayer {
-  display: none;
-  position: fixed;
-  width: 1200px;
-  height: calc(100% - 75px);
-  background-color: dodgerblue;
-  z-index: 1;
-  top: 75px;
-  transform: translateX(-50%);
-  left: 50%;
 }

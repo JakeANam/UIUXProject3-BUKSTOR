@@ -14,7 +14,7 @@ const kakaoBookURL =  "https://dapi.kakao.com/v3/search/book?"
  * @param {string} searchIn 검색 조건 / title: 제목(기본), isbn: ISBN, publisher: 출판사, person: 인명
  * @param {string} toSort 검색 결과 정렬 순서 / accuracy: 정확도순(기본), latest: 발간일순
  * @param {number} pageNeed 결과 페이지 번호 / 기본값 1
- * @param {number} sizeNeed 표시할 데이터(Document) 수 / 기본값 10
+ * @param {number} sizeNeed 표시할 데이터(Document) 수 / 기본값 10, 최대 50
  * @returns {object} KakaoBook open API에 사용할 parameter object
  */
 function getkakaoBookURLParameter(searchAbout, searchIn = "title", toSort = "accuracy", pageNeed = 1, sizeNeed = 10) {
@@ -70,9 +70,11 @@ async function mainPromiseList(promiseData, listSort, listClass='mainBookList') 
 
         const allBookInfo = data.documents;
         for (let i in allBookInfo) {
+            let listA = document.createElement("a");
+            listA.setAttribute("href", "#")
             let listIndex = document.createElement("li");
 
-            let bookImg = treatThumbnail(allBookInfo[i].thumbnail, i);
+            let bookImg = treatThumbnail(allBookInfo[i].thumbnail, i, listClass);
             listIndex.append(bookImg);
             let title = document.createElement("p");
             title.innerText = allBookInfo[i].title;
@@ -89,8 +91,8 @@ async function mainPromiseList(promiseData, listSort, listClass='mainBookList') 
 
             listIndex.append(title, publisher, authors, price);
             }
-            
-            mainBookList.appendChild(listIndex);    
+            listA.appendChild(listIndex);
+            mainBookList.appendChild(listA);    
         }
 
         if (allBookInfo.length <= 5) {
@@ -104,7 +106,7 @@ async function mainPromiseList(promiseData, listSort, listClass='mainBookList') 
     });
 }
 
-function treatThumbnail(thumbnailURL, thumbnailIndex) {
+function treatThumbnail(thumbnailURL, thumbnailIndex, listClass) {
     let thumbnail;
     if (thumbnailURL == '' || thumbnailURL == null) {
         thumbnail = document.createElement("div");
@@ -144,17 +146,3 @@ function putCommaInNumber(inputNum){
 
     return newNum;
 };
-
-/*
-function makeList(ajaxResult){
-    const allBookInfo = ajaxResult.documents;
-    for(let i in allBookInfo){
-        let bookIndex =  $('.bookList>li').eq(i);
-        bookIndex.children('img').attr('src', allBookInfo[i].thumbnail);
-        bookIndex.children('p:eq(0)').text(allBookInfo[i].title);
-        bookIndex.children('p:eq(1)').text(allBookInfo[i].publisher);
-        bookIndex.children('p:eq(2)').text(allBookInfo[i].authors);
-        bookIndex.children('p:eq(3)').text("￦ " + putCommaInNumber(allBookInfo[i].price));
-    }
-}
-*/

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUKSTOR</title>
+    <!-- 폰트, 아이콘 설정 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/styleCompile.css">
+    <link rel="icon" href="icons/logoRound.png">
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/7b6d17b275.js" crossorigin="anonymous"></script>
+    <!-- Swiper -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Javascript -->
+    <script defer src="./scripts/kakaoBookAPIScripts.js"></script>
+    <script defer src="./scripts/mainPage.js"></script>
+    <script defer src="./scripts/commonScripts.js"></script>
+
+    <script>
+        window.onload = function() {
+            /*
+            도서 목록 불러오는 방법
+            const url내용 = getkakaoBookURLParameter(검색 내용, 검색 조건, 정렬 순서, 결과 페이지 번호, 표시 내용);
+            const Promise 형태 검색 결과 = searchKakaoBookData_async(url내용);
+            mainPromiseList(Promise 형태 검색 결과, 목록 번호, 목록(ul)의 부모 class이름);
+            */
+            // 첫번째 목록
+            let [needs1,needs2,needs3] = [10,7,20];
+            const urlList1 = getkakaoBookURLParameter("오월", undefined, "latest", undefined, 10);
+            const asyncList1 = searchKakaoBookData_async(urlList1);
+            mainPromiseList(asyncList1, 0);
+
+        }
+    </script>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header>
+        <div class="headerTop">
+            <div class="wrap">
+                <p>지금 가입하시면 문화상품권 10,000원이!</p>
+                <a href="#" class="headerMember"><i class="fa-regular fa-circle-user"></i>    로그인/회원가입</a>
+                <ul class="sns">
+                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                </ul>
+                
+            </div>
+        </div>
+        <div class="headerBottom">
+            <div class="wrap">
+                <a href="./index.html" class="logo">
+                    <img src="./images/logoColor.png">
+                </a>
+                
+                <!-- 헤더 메뉴 -->
+                <nav>
+                    <ul class="main">
+                        <li><a href="">인기 도서</a></li>
+                        <li><a href="">신상 도서</a></li>
+                        <li><a href="">도서 검색</a></li>
+                        <li><a href="">eBook</a></li>
+                        <li><a href="">이벤트</a></li>
+                        <li><a href="">블로그</a></li>
+                        <li>
+                            <a href="">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                               <i class="fa-solid fa-bag-shopping"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                
+            </div>
+        </div>
+    </header>
+    <div id="searchPopup">
+        
+    </div>
+    <div id="cartPopup">
+        
+    </div>
+    <div id="searchList">
+
+    </div>
+
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="wrap">
+            <div class="adress">
+                <ul>
+                    <li>BUKSTOR</li>
+                    <li>충남 아산시 아산로 79</li>
+                    <li>(실옥동 20-48)</li>
+                </ul>
+                
+            </div>
+            <ul class="footerMenu">
+                <li><a href="#">도서 검색</a></li>
+                <li><a href="#">e-book</a></li>
+                <li><a href="#">이벤트</a></li>
+                <li><a href="#">블로그</a></li>
+                <li><a href="#">대량 구매 안내</a></li>
+            </ul>
+            <ul class="footerMenu">
+                <li><a href="#">회사 소개</a></li>
+                <li><a href="#">이용 약관</a></li>
+                <li><a href="#">개인정보 보호정책</a></li>
+                <li><a href="#">채용 정보</a></li>
+                <li><a href="#">광고 안내</a></li>
+            </ul>
+            <div class="contect">
+                <p>Tel:</p>
+                <p>041-542-0234</p>
+                <p>Email:</p>
+                <p>inquiry@BUKSTOR.co.kr</p>
+                <img src="./images/paypals.jpg">
+            </div>
+            <div class="footerBottom">
+                <ul class="sns">
+                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                </ul>
+                <p class="copyright">
+                    Copyright &copy; BUKSTOR<br>Origin Design from Kalium | Designed by Eo-Jin Nam
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 전체 도서 목록 -->
+    <div id="bookListLayer"></div>
+
+    <!-- 검색 도서 목록 -->
+    <div id="searchListLayer"></div>
+</body>
+</html>

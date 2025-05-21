@@ -13,7 +13,6 @@ function fixHeader(){
     }
 }
 
-
 fixHeader(); // 첫 화면 헤더 고정
 showBigBannerImg();
 window.addEventListener("scroll", function(){
@@ -21,22 +20,6 @@ window.addEventListener("scroll", function(){
     showBigBannerImg();
 });
 
-
-// 책 이미지 높이 설정(너비:높이 = API 특성상 2:3)
-/*
-function mainBookThumbnailResizing(){
-    // alert('yo');
-    let imageList = document.getElementsByClassName('bookList')[0].getElementsByTagName('img');
-
-    for (let i = 0; i < imageList.length; i++) {
-        imageList[i].style.height = String(imageList[i].width * 1.5) + "px";
-    }
-}
-
-window.addEventListener('resize', function(){
-    mainBookThumbnailResizing();
-});
-*/
 // 대형 배너의 특정 위치에서 이미지 FadeIn
 function showBigBannerImg() {
     // 대형 배너
