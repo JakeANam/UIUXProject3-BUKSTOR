@@ -3,13 +3,12 @@
 
 // 컬러 설정
 $violet1: #76323f;
-$violet2: #58252f;
 $black1: #333333;
 $gray1: #f3f0ef;
 $gray2: #cccccc;
 $gray3: #666666;
 $whitePerfect: #ffffff;
-$bannerYellow: #FED800;
+
 
 // 폰트 설정
 $fontSerif: 'Nanum Myeongjo', serif;
@@ -131,7 +130,7 @@ header {
         box-sizing: border-box;
         position: relative;
         margin: 0 auto;
-        z-index: 1;
+        z-index: 2;
         
         .logo {
             display: block;

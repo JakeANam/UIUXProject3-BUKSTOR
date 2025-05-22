@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="./scripts/kakaoBookAPIScripts.js"></script>
-    <script defer src="./scripts/mainPage.js"></script>
     
     <title>Document</title>
      <script>
         window.onload = function(){
-            const urlList1 = getkakaoBookURLParameter("MOS", undefined, undefined, undefined, 20);
+            const urlList1 = getkakaoBookURLParameter("1162540168", "isbn");
             const asyncList1 = searchKakaoBookData_async(urlList1);
             mainPromiseList(asyncList1, 0);
+            console.log("도서 표시 시범");
+            console.log(urlList1);
             console.log(asyncList1);
 
         }

@@ -54,8 +54,8 @@ async function searchKakaoBookData_async(kakaoBookParameter) {
 }
 
 /**
- * @description Promise 형태의 data를 Object형태로 바꾼 후 main용 list 생성
- * @param {Promise} promiseData Promise 형태의 data
+ * @description Promise 형태의 data를 Object형태로 바꾼 후 index.html의 list 생성
+ * @param {Promise} promiseData Promise 형태의 data (도서 정보 다수 존재)
  * @param {Number} listSort mainpage에서 윗쪽부터 list 순번
  * @param {String} listClass mainpage 목록 종류(className) / 기본값='mainBookList'
  */
@@ -71,10 +71,10 @@ async function mainPromiseList(promiseData, listSort, listClass='mainBookList') 
         const allBookInfo = data.documents;
         for (let i in allBookInfo) {
             let listA = document.createElement("a");
-            listA.setAttribute("href", "#")
+            listA.setAttribute("href", "javascript:moveToDetail(asyncDetail)")
             let listIndex = document.createElement("li");
 
-            let bookImg = treatThumbnail(allBookInfo[i].thumbnail, i, listClass);
+            let bookImg = treatThumbnail(allBookInfo[i].thumbnail, Number(i));
             listIndex.append(bookImg);
             let title = document.createElement("p");
             title.innerText = allBookInfo[i].title;
@@ -106,7 +106,13 @@ async function mainPromiseList(promiseData, listSort, listClass='mainBookList') 
     });
 }
 
-function treatThumbnail(thumbnailURL, thumbnailIndex, listClass) {
+/**
+ * @description Promise 형태에 존재하는 이미지(thumbnail)를 list의 표시하기 위해 처리 후 <img>형태로 출력
+ * @param {String} thumbnailURL 도서 이미지의 url
+ * @param {Number} thumbnailIndex mainpage에서 윗쪽부터 list 순번
+ * @returns {Object}  <img> 형태의 도서 이미지
+ */
+function treatThumbnail(thumbnailURL, thumbnailIndex) {
     let thumbnail;
     if (thumbnailURL == '' || thumbnailURL == null) {
         thumbnail = document.createElement("div");
@@ -114,15 +120,45 @@ function treatThumbnail(thumbnailURL, thumbnailIndex, listClass) {
         const subText = document.createElement("p");
         subText.innerHTML = "이미지<br>준비중입니다!"
         subLogo.setAttribute("src", "./icons/logoRound.png");
-        subLogo.setAttribute('alt', '메인도서목록' + (Number(thumbnailIndex) + 1));
+        subLogo.setAttribute('alt', '메인도서목록' + (thumbnailIndex + 1));
         thumbnail.append(subLogo, subText);
     } else {
         thumbnail = document.createElement("img");
         thumbnail.setAttribute('src', thumbnailURL);
-        thumbnail.setAttribute('alt', '메인도서목록' + (Number(thumbnailIndex) + 1));
+        thumbnail.setAttribute('alt', '메인도서목록' + (thumbnailIndex + 1));
     }
     
     return thumbnail;
+}
+
+
+/**
+ * @description 상세페이지에 보내기 위한 도서 정보 표시
+ * @param {Promise} promiseData Promise 형태의 data (도서 정보 하나 존재)
+ * @param {Number} listSort mainpage에서 윗쪽부터 list 순번
+ * @param {String} listClass mainpage 목록 종류(className) / 기본값='mainBookList'
+ */
+async function alertPromiseData(promiseData) {
+    promiseData.then(function(data) {
+        let alertMessage = "현재 보유 중인 도서가 한 종류 밖에 없습니다.\n\n현재 보유 중인 도서:\n";
+        alertMessage += "   도서명: " + data.documents[0].title +"\n"; 
+        alertMessage += "   저자: " + data.documents[0].authors +"\n"; 
+        alertMessage += "   isbn: " + data.documents[0].isbn +"\n"; 
+        alert(alertMessage);
+    });
+}
+
+/**
+ * @description Promise 형태의 data를 Object형태로 바꾼 후 index.html의 list 생성
+ * @param {Promise} promiseData Promise 형태의 data
+ * @param {Number} listSort mainpage에서 윗쪽부터 list 순번
+ * @param {String} listClass mainpage 목록 종류(className) / 기본값='mainBookList'
+ * @returns {Object} Promise 형태의 data 
+ */
+async function detailPromiseData(promiseData) {
+    promiseData.then(function(data) {
+        
+    });
 }
 
 /**
@@ -130,7 +166,7 @@ function treatThumbnail(thumbnailURL, thumbnailIndex, listClass) {
  * @param {number} 입력 받은 숫자
  * @returns {string}  ,가 추가된 숫자
  */
-function putCommaInNumber(inputNum){
+function putCommaInNumber(inputNum) {
     let newNum = "";
     inputNum = String(inputNum);
 
