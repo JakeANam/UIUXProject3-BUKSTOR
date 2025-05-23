@@ -19,6 +19,8 @@
     <!-- Javascript -->
     <script defer src="./scripts/kakaoBookAPIScripts.js"></script>
     <script defer src="./scripts/commonScripts.js"></script>
+    <script defer src="./scripts/bookDetail.js"></script>
+
 
     <script>
         window.onload = function() {
@@ -31,6 +33,7 @@
             // 상세페이지
             const urlDetail = getkakaoBookURLParameter("1162540168", "isbn");
             asyncDetail = searchKakaoBookData_async(urlDetail);
+            detailPromiseData(asyncDetail);
         }
     </script>
 </head>
@@ -93,17 +96,80 @@
 
     <!-- 상세페이지 -->
     <!-- 도서 개요 -->
-    <div id="bookAbstract">
-        <img alt="도서 이미지"/>
-        <div>
-            <h1>책제목</h1>
-            <p>저자</p>
-            <p>출판사</p>
+    <div class="wrap">
+        <div id="bookAbstract">
+            <!-- 이미지 -->
+            <img alt="도서 이미지" src="./images/상세페이지도서앞.jpg"/>
+            <div>
+                <h1>책제목</h1>
+                <h2>부제</h2>
+                <p>콘텐츠</p>
+                <p>isbn</p>
+                <p>저자</p>
+                <p>출판사</p>
+                <p>출판일자</p>
+            </div>
+        </div>
+    </div>  
+
+    <div id="tabBar">
+        <div class="wrap">
+            <ul>
+                <li><a href="#">도서 정보</a></li>
+                <li><a href="#">리뷰</a></li>
+                <li><a href="#">교환 반품 품절 안내</a></li>
+            </ul>
         </div>
     </div>
-    <!-- 이미지 -->
+
+    <div class="wrap">
+        <div id="bookBanner">
+            <img src="./images/상세페이지배너.jpg" alt="상세페이지배너"/>
+        </div>      
+        <div id="bookInfo">
+            책정보
+        </div>            
+        <div id="bookReview">
+
+        </div>
+        <div id="problemSolving"></div>
+    </div>
+    
     <!-- 제목 -->
-     <!--  -->
+    
+    <!-- 수상 정보 -->
+
+
+    <!-- 콘텐츠 -->
+
+    <!-- 작가 정보 -->
+    <!-- 목차 -->
+    <!-- 추천사 -->
+    <!-- 주요 내용 -->
+    <!-- 출판사 평가 -->
+    <!-- 기본 정보 -->
+    <!-- 리뷰 -->
+    <!-- 교환/반품 안내 -->
+
+    <!-- 가격,구매,장바구니 -->
+    <div id="purchase">
+        <div class="wrap">
+            <p>총 상품 금액</p>
+            <p>￦ 10,000</p>
+
+            <ul>
+                <li><a href="#">찜하기</a></li>
+                <li><a href="#">선물하기</a></li>
+                <li><a href="#">장바구니</a></li>
+                <li><a href="#">구매하기</a></li>
+            </ul>
+            <ul>
+                <li>-</li>
+                <li>1</li>
+                <li>+</li>
+            </ul>
+        </div>
+    </div>
 
     <!-- 푸터 -->
     <footer>

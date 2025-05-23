@@ -157,7 +157,11 @@ async function alertPromiseData(promiseData) {
  */
 async function detailPromiseData(promiseData) {
     promiseData.then(function(data) {
-        
+        console.log(data);
+
+        const bookAbstract = document.getElementById("bookAbstract");
+        bookAbstract.getElementsByTagName("p")[0].innerHTML
+            = data.documents[0].contents;
     });
 }
 

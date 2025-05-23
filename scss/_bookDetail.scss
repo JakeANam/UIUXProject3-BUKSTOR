@@ -1,0 +1,87 @@
+@charset "utf-8";
+
+#bookAbstract {
+    background-color: red;
+
+    img {
+        display: block;
+        width: 300px;
+        height: 450px;
+        background-color: orange;
+        float: left;
+    }
+    
+    &::after {
+        @include setAfter();
+    }
+}
+
+#tabBar {
+    clear: both;
+    border-top: 1px solid $gray2;
+    border-bottom: 1px solid $gray2;
+
+    .wrap{
+        height: 73px;
+        line-height: 75px;
+        font-size: 25px;
+        font-weight: bold;
+        // position: fixed;
+
+        ul {
+            width: 100%;
+
+            li {
+                float: left;
+                margin-right: 30px;
+                box-sizing: border-box;
+
+                a {
+                    font-family: $fontSerif;
+                }
+            }
+        }
+    }
+    
+}
+
+#bookBanner {
+    clear: both;
+    text-align: center;
+}
+
+#purchase {
+    width: 100%;
+    height: 99px;
+    line-height: 100px;
+    border-top: 1px solid $whitePerfect;
+    background-color: $violet1;
+    color: $whitePerfect;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    font-size: 25px;
+
+    .wrap {
+        p {
+            float: left;
+        }
+        ul {
+            float: right;
+
+            li {
+                float: left;
+
+                a {
+                    font-family: $fontSerif;
+                    font-size: 25px;
+                    color: $whitePerfect;
+                    border: 1px solid $whitePerfect;
+                    border-radius: 20px;
+                    padding: 15px;
+                    margin: 0 5px;
+                }
+            }
+        }
+    }
+}
