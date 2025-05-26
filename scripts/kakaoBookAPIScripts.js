@@ -62,11 +62,11 @@ async function searchKakaoBookData_async(kakaoBookParameter) {
 async function mainPromiseList(promiseData, listSort, listClass='mainBookList') {
     
     promiseData.then(function(data) {
-        let mainBookList = document.getElementsByClassName(listClass)[listSort].getElementsByTagName("ul")[0];
+        let mainBookList = document.getElementsByClassName('mainBookList')[listSort].getElementsByTagName("ul")[0];
         //5개 기준 ul width 100%
-        if (listClass=='mainBookList') {
+        // if (listClass=='mainBookList') {
             mainBookList.style.width = (20 * data.documents.length) + "%";    
-        }
+        // }
 
         const allBookInfo = data.documents;
         for (let i in allBookInfo) {
@@ -159,11 +159,35 @@ async function detailPromiseData(promiseData) {
     promiseData.then(function(data) {
         console.log(data);
 
-        const bookAbstract = document.getElementById("bookAbstract");
-        bookAbstract.getElementsByTagName("p")[0].innerHTML
-            = data.documents[0].contents;
+        const bookAbstract = document.getElementById("bookAbstract").getElementsByTagName("div")[0];
+        const title = document.createElement("h1");
+        title.innerText = data.documents[0].title;
+        bookAbstract.appendChild(title);
+
+        // document.addEventListener("DOMContentLoaded", async function () {
+        //     try {
+        //         const response = await fetch("./도서 부제 및 소개.txt");
+        //         if (!response.ok) {
+        //             throw new Error("네트워크 상의 문제가 발생했습니다.");
+        //         }
+        //         const data = await response.text();
+        //         bookAbstract.innerHTML += data
+        //     } catch (error) {
+        //         console.error("경고! 다음 이유로 컨텐츠를 불러들이지 못했습니다!: ", error)
+        //     }
+        // });
+
+        //addSubTitleAndContent(bookAbstract);
+
+        bookAbstract.getElementsByTagName("h1")[0].innerHTML
+            += data.documents[0].title;
+        
+        
     });
 }
+
+
+
 
 /**
  * @description 숫자에 , 추가 (ex: 1234500 → 1,234,500)

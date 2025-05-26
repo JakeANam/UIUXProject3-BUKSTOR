@@ -3,6 +3,7 @@
 
 // 컬러 설정
 $violet1: #76323f;
+$violet2: #361118;
 $black1: #333333;
 $gray1: #f3f0ef;
 $gray2: #cccccc;
@@ -45,8 +46,8 @@ $fontSanSerif: '맑은 고딕', sans-serif;
     transition: 0.5s;
 
     &:hover {
-        background-color: $whitePerfect;
-        color: $violet1
+        background-color: $violet2;
+        border-color: $violet2;
     }
 }
 
@@ -88,6 +89,10 @@ header {
     background-color: $whitePerfect;
     height: 100px;
     min-width: 1200px;
+
+    &>*>.wrap {
+        width: 1150px;
+    }
 
     .headerTop {
         height: 25px;
@@ -169,12 +174,6 @@ header {
             }
         }
     }
-
-    p {
-        float: right;
-        padding: 0 5px;
-    }
-    
 }
 
 
