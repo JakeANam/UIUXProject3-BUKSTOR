@@ -209,6 +209,142 @@ footer .footerBottom .copyright {
   padding-top: 24px;
 }
 
+#warningError {
+  text-align: center;
+  margin-top: 100px;
+}
+#warningError img {
+  width: 50%;
+}
+#warningError h1 {
+  font-size: 50px;
+  margin: 100px 0;
+}
+#warningError a {
+  background-color: #76323f;
+  color: #ffffff;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 8px 23px;
+  border: 2px solid #76323f;
+  box-sizing: border-box;
+  transition: 0.5s;
+  padding: 20px 40px;
+}
+#warningError a:hover {
+  background-color: #361118;
+  border-color: #361118;
+}
+
+.mainBookList {
+  position: relative;
+  height: 450px;
+}
+.mainBookList .bookListWrap {
+  width: 1100px;
+  height: 100%;
+  position: absolute;
+  left: 50px;
+  overflow: hidden;
+}
+.mainBookList .bookListWrap ul {
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+}
+.mainBookList .bookListWrap ul li {
+  float: left;
+  text-align: center;
+  width: 210px;
+  height: calc(100% - 20px);
+  margin: 5px;
+  padding: 5px 0;
+  cursor: pointer;
+}
+.mainBookList .bookListWrap ul li a {
+  display: block;
+}
+.mainBookList .bookListWrap ul li div {
+  width: 190px;
+  height: 285px;
+  color: #ffffff;
+  background-color: #76323f;
+  box-shadow: 0px 1px 2px #666666;
+  margin-bottom: 20px;
+}
+.mainBookList .bookListWrap ul li div img {
+  width: 75px;
+  height: 75px;
+  background-color: #ffffff;
+  margin: 25px 0;
+}
+.mainBookList .bookListWrap ul li img {
+  width: 190px;
+  height: 285px;
+  margin-bottom: 20px;
+  box-shadow: 0px 1px 2px #666666;
+  transition: 0.5s;
+}
+.mainBookList .bookListWrap ul li p {
+  width: 90%;
+  margin: 0 5% 2%;
+}
+.mainBookList .bookListWrap ul li p:nth-of-type(1) {
+  font-size: 23px;
+  font-weight: bold;
+  font-family: "Nanum Myeongjo", serif;
+  transition: 0.5s;
+}
+.mainBookList .bookListWrap ul li p:nth-of-type(2), .mainBookList .bookListWrap ul li p:nth-of-type(3) {
+  font-size: 12px;
+}
+.mainBookList .bookListWrap ul li p:nth-of-type(4) {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Nanum Myeongjo", serif;
+  color: #76323f;
+}
+.mainBookList .bookListWrap ul li:hover img, .mainBookList .bookListWrap ul li:hover div {
+  box-shadow: 1px 5px 10px #666666;
+}
+.mainBookList .bookListWrap ul li:hover p:nth-of-type(1) {
+  color: #76323f;
+}
+.mainBookList .bookListWrap ul li:hover img, .mainBookList .bookListWrap ul li:hover div {
+  box-shadow: 1px 5px 10px #666666;
+}
+.mainBookList .bookListWrap ul li:hover p:nth-of-type(1) {
+  color: #76323f;
+}
+.mainBookList .bookListWrap ul::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.mainBookList .bookListButton {
+  text-align: center;
+  font-size: 30px;
+  line-height: 31px;
+  color: #76323f;
+  box-sizing: border-box;
+  border: 1px solid #76323f;
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.mainBookList .bookListButton:first-of-type {
+  left: 5px;
+}
+.mainBookList .bookListButton:last-of-type {
+  right: 5px;
+}
+
 #bookListLayer {
   display: none;
   position: fixed;
@@ -408,110 +544,6 @@ footer .footerBottom .copyright {
   background-color: white;
 }
 
-.mainBookList {
-  position: relative;
-  height: 450px;
-}
-.mainBookList .bookListWrap {
-  width: 1100px;
-  height: 100%;
-  position: absolute;
-  left: 50px;
-  overflow: hidden;
-}
-.mainBookList .bookListWrap ul {
-  margin: 0 auto;
-  position: relative;
-  height: 100%;
-}
-.mainBookList .bookListWrap ul li {
-  float: left;
-  text-align: center;
-  width: 210px;
-  height: calc(100% - 20px);
-  margin: 5px;
-  padding: 5px 0;
-  cursor: pointer;
-}
-.mainBookList .bookListWrap ul li div {
-  width: 190px;
-  height: 285px;
-  color: #ffffff;
-  background-color: #58252f;
-  box-shadow: 0px 1px 2px #666666;
-  margin-bottom: 20px;
-}
-.mainBookList .bookListWrap ul li div img {
-  width: 75px;
-  height: 75px;
-  background-color: #ffffff;
-  margin: 25px 0;
-}
-.mainBookList .bookListWrap ul li img {
-  width: 190px;
-  height: 285px;
-  margin-bottom: 20px;
-  box-shadow: 0px 1px 2px #666666;
-  transition: 0.5s;
-}
-.mainBookList .bookListWrap ul li p {
-  width: 90%;
-  margin: 0 5% 2%;
-}
-.mainBookList .bookListWrap ul li p:nth-of-type(1) {
-  font-size: 23px;
-  font-weight: bold;
-  font-family: "Nanum Myeongjo", serif;
-  transition: 0.5s;
-}
-.mainBookList .bookListWrap ul li p:nth-of-type(2), .mainBookList .bookListWrap ul li p:nth-of-type(3) {
-  font-size: 12px;
-}
-.mainBookList .bookListWrap ul li p:nth-of-type(4) {
-  font-size: 20px;
-  font-weight: bold;
-  font-family: "Nanum Myeongjo", serif;
-  color: #76323f;
-}
-.mainBookList .bookListWrap ul li:hover img, .mainBookList .bookListWrap ul li:hover div {
-  box-shadow: 1px 5px 10px #666666;
-}
-.mainBookList .bookListWrap ul li:hover p:nth-of-type(1) {
-  color: #76323f;
-}
-.mainBookList .bookListWrap ul li:hover img, .mainBookList .bookListWrap ul li:hover div {
-  box-shadow: 1px 5px 10px #666666;
-}
-.mainBookList .bookListWrap ul li:hover p:nth-of-type(1) {
-  color: #76323f;
-}
-.mainBookList .bookListWrap ul::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.mainBookList .bookListButton {
-  text-align: center;
-  font-size: 30px;
-  line-height: 31px;
-  color: #76323f;
-  box-sizing: border-box;
-  border: 1px solid #76323f;
-  position: absolute;
-  transform: translateY(-50%);
-  top: 50%;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-.mainBookList .bookListButton:first-of-type {
-  left: 5px;
-}
-.mainBookList .bookListButton:last-of-type {
-  right: 5px;
-}
-
 .categories {
   margin-top: 75px;
 }
@@ -704,41 +736,70 @@ footer .footerBottom .copyright {
 }
 
 #bookAbstract {
-  background-color: red;
+  margin-top: 100px;
 }
 #bookAbstract img {
   display: block;
-  width: 300px;
-  height: 450px;
-  background-color: orange;
+  width: 400px;
+  height: 600px;
   float: left;
+}
+#bookAbstract > div {
+  float: right;
+  padding: 0 25px;
+  box-sizing: border-box;
+  width: calc(100% - 400px);
+}
+#bookAbstract > div h1 {
+  margin: 0 0 10px;
+}
+#bookAbstract > div h1:first-of-type {
+  color: #76323f;
+  font-size: 50px;
+}
+#bookAbstract > div h1:last-of-type {
+  font-size: 30px;
+}
+#bookAbstract > div ul {
+  margin-top: 50px;
+  font-size: 20px;
+}
+#bookAbstract > div ul span {
+  display: inline-block;
+  width: 100px;
+  font-weight: bold;
+  color: #76323f;
+}
+#bookAbstract > div p {
+  margin: 10px 0;
 }
 #bookAbstract::after {
   content: "";
   display: block;
   clear: both;
+  margin-bottom: 100px;
 }
 
 #tabBar {
+  margin-bottom: 150px;
+  height: 73px;
   clear: both;
+  z-index: 1;
   border-top: 1px solid #cccccc;
   border-bottom: 1px solid #cccccc;
-  background-color: #ffffff;
-  z-index: 1;
 }
 #tabBar .wrap {
+  box-sizing: border-box;
   height: 73px;
-  line-height: 75px;
+  line-height: 73px;
   font-size: 25px;
   font-weight: bold;
-}
-#tabBar .wrap ul {
-  width: 100%;
+  padding: 0 25px;
+  background-color: #ffffff;
 }
 #tabBar .wrap ul li {
   float: left;
   margin-right: 30px;
-  box-sizing: border-box;
 }
 #tabBar .wrap ul li a {
   font-family: "Nanum Myeongjo", serif;
@@ -778,14 +839,20 @@ footer .footerBottom .copyright {
 }
 #purchase .wrap p {
   float: left;
+  font-family: "Nanum Myeongjo", serif;
+}
+#purchase .wrap p:last-of-type {
+  font-weight: bold;
+  margin-left: 40px;
+  font-size: 40px;
 }
 #purchase .wrap ul {
   float: right;
 }
-#purchase .wrap ul li {
+#purchase .wrap ul:first-of-type li {
   float: left;
 }
-#purchase .wrap ul li a {
+#purchase .wrap ul:first-of-type li a {
   font-family: "Nanum Myeongjo", serif;
   font-size: 25px;
   color: #ffffff;
@@ -793,7 +860,29 @@ footer .footerBottom .copyright {
   border-radius: 20px;
   padding: 15px;
   margin: 0 5px;
+  transition: 0.5s;
 }
-#purchase .wrap ul li a:hover {
+#purchase .wrap ul:first-of-type li a:hover {
+  background-color: #361118;
+}
+#purchase .wrap ul:last-of-type {
+  overflow: hidden;
+  border-radius: 15px;
+  border: 1px solid #ffffff;
+  height: 50px;
+  line-height: 50px;
+  margin: 25px;
+}
+#purchase .wrap ul:last-of-type li {
+  float: left;
+  width: 30px;
+  text-align: center;
+}
+#purchase .wrap ul:last-of-type li:nth-of-type(2) {
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+}
+#purchase .wrap ul:last-of-type li:not(:nth-of-type(2)):hover {
+  cursor: pointer;
   background-color: #361118;
 }

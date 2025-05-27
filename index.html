@@ -20,6 +20,7 @@
     <script defer src="./scripts/kakaoBookAPIScripts.js"></script>
     <script defer src="./scripts/mainPage.js"></script>
     <script defer src="./scripts/commonScripts.js"></script>
+    <script defer src="./scripts/animations.js"></script>
 
     <script>
         let asyncDetail;
@@ -45,11 +46,8 @@
             const urlList3 = getkakaoBookURLParameter("여행",  undefined, undefined, undefined, 20);
             const asyncList3 = searchKakaoBookData_async(urlList3);
             mainPromiseList(asyncList3, 2);
-
-            // 상세페이지
-            const urlDetail = getkakaoBookURLParameter("1162540168", "isbn");
-            asyncDetail = searchKakaoBookData_async(urlDetail);
         }
+        
     </script>
 </head>
 <body>

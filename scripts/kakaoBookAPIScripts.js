@@ -75,7 +75,7 @@ async function mainPromiseList(promiseData, listSort, listClass='mainBookList') 
             let listIndex = document.createElement("li");
 
             let bookImg = treatThumbnail(allBookInfo[i].thumbnail, Number(i));
-            listIndex.append(bookImg);
+            listA.append(bookImg);
             let title = document.createElement("p");
             title.innerText = allBookInfo[i].title;
 
@@ -89,10 +89,10 @@ async function mainPromiseList(promiseData, listSort, listClass='mainBookList') 
             let price = document.createElement("p");
             price.innerText = ("￦ " + putCommaInNumber(allBookInfo[i].price));
 
-            listIndex.append(title, publisher, authors, price);
+             listA.append(title, publisher, authors, price);
             }
-            listA.appendChild(listIndex);
-            mainBookList.appendChild(listA);    
+            listIndex.appendChild(listA);
+            mainBookList.appendChild(listIndex);    
         }
 
         if (allBookInfo.length <= 5) {
@@ -131,6 +131,42 @@ function treatThumbnail(thumbnailURL, thumbnailIndex) {
     return thumbnail;
 }
 
+// 상세페이지로 이동
+async function moveToDetail(promiseData) {
+    promiseData.then(async function(data) {
+        let filename = "./" + data.documents[0].isbn + '.txt';
+        // document.addEventListener("DOMContentLoaded", async function (filename) {
+            alert(filename);
+            let response;
+            try {
+                response = await fetch(filename);
+                if (!response.ok) {
+                        this.location.href = "./warningNoBook.html"
+                        
+                } else {
+                    thislocation.href = './bookDetail.html'
+                }
+            } catch (error) {
+                alert(error);
+                this.location.href = "./warningNoBook.html"
+            }
+
+            
+        });
+    // });
+}
+
+async function checkBookExist(params) {
+    // alert(params)
+    let filename = params + '.txt';
+    let isBookExist = true;
+    const response = await fetch("./01162540168 9791162540169.txt");
+    if (!response.ok) {
+        //this.location.href = "./warningNoBook.html"
+        isBookExist = false;
+    }
+    return await isBookExist;
+}
 
 /**
  * @description 상세페이지에 보내기 위한 도서 정보 표시
@@ -140,6 +176,7 @@ function treatThumbnail(thumbnailURL, thumbnailIndex) {
  */
 async function alertPromiseData(promiseData) {
     promiseData.then(function(data) {
+
         let alertMessage = "현재 보유 중인 도서가 한 종류 밖에 없습니다.\n\n현재 보유 중인 도서:\n";
         alertMessage += "   도서명: " + data.documents[0].title +"\n"; 
         alertMessage += "   저자: " + data.documents[0].authors +"\n"; 
@@ -157,37 +194,19 @@ async function alertPromiseData(promiseData) {
  */
 async function detailPromiseData(promiseData) {
     promiseData.then(function(data) {
-        console.log(data);
+        //console.log(data);
 
         const bookAbstract = document.getElementById("bookAbstract").getElementsByTagName("div")[0];
         const title = document.createElement("h1");
-        title.innerText = data.documents[0].title;
+        title.innerText = data.documents[0].isbn;
         bookAbstract.appendChild(title);
-
-        // document.addEventListener("DOMContentLoaded", async function () {
-        //     try {
-        //         const response = await fetch("./도서 부제 및 소개.txt");
-        //         if (!response.ok) {
-        //             throw new Error("네트워크 상의 문제가 발생했습니다.");
-        //         }
-        //         const data = await response.text();
-        //         bookAbstract.innerHTML += data
-        //     } catch (error) {
-        //         console.error("경고! 다음 이유로 컨텐츠를 불러들이지 못했습니다!: ", error)
-        //     }
-        // });
 
         //addSubTitleAndContent(bookAbstract);
 
         bookAbstract.getElementsByTagName("h1")[0].innerHTML
             += data.documents[0].title;
-        
-        
     });
 }
-
-
-
 
 /**
  * @description 숫자에 , 추가 (ex: 1234500 → 1,234,500)
@@ -199,10 +218,10 @@ function putCommaInNumber(inputNum) {
     inputNum = String(inputNum);
 
     do{
-        if(inputNum.length > 3){
+        if(inputNum.length > 3) {
             newNum = ',' + inputNum.slice(-3) + newNum;
             inputNum = inputNum.slice(0, -3);
-        }else{
+        } else {
             newNum = inputNum + newNum;
             inputNum = '';
         } 

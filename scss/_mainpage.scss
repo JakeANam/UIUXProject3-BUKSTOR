@@ -171,125 +171,125 @@ $bannerViolet: #58252f;
     }
 } 
 
-// 메인페이지 도서 목록
-.mainBookList {
-    position: relative;
-    height: 450px;
+// // 메인페이지 도서 목록
+// .mainBookList {
+//     position: relative;
+//     height: 450px;
 
-    .bookListWrap {
-        width: 1100px;
-        height: 100%;
-        position: absolute;
-        left: 50px;
-        overflow: hidden;
+//     .bookListWrap {
+//         width: 1100px;
+//         height: 100%;
+//         position: absolute;
+//         left: 50px;
+//         overflow: hidden;
 
-        ul {
-            margin: 0 auto;
-            position: relative;
-            height: 100%;
+//         ul {
+//             margin: 0 auto;
+//             position: relative;
+//             height: 100%;
             
-            li {
-                float: left;
-                text-align: center;
-                width: 210px;
-                height: calc(100% - 20px);
-                margin: 5px;
-                padding: 5px 0;
-                cursor: pointer;
+//             li {
+//                 float: left;
+//                 text-align: center;
+//                 width: 210px;
+//                 height: calc(100% - 20px);
+//                 margin: 5px;
+//                 padding: 5px 0;
+//                 cursor: pointer;
 
-                div {
-                    width: 190px;
-                    height: calc(190px * 1.5); 
-                    color: $whitePerfect;
-                    background-color: $bannerViolet;
-                    box-shadow: 0px 1px 2px $gray3;
-                    margin-bottom: 20px;
+//                 div {
+//                     width: 190px;
+//                     height: calc(190px * 1.5); 
+//                     color: $whitePerfect;
+//                     background-color: $bannerViolet;
+//                     box-shadow: 0px 1px 2px $gray3;
+//                     margin-bottom: 20px;
 
-                    img {
-                        width: 75px;
-                        height: 75px;
-                        background-color: $whitePerfect;
-                        margin: 25px 0;
-                    }
-                }
+//                     img {
+//                         width: 75px;
+//                         height: 75px;
+//                         background-color: $whitePerfect;
+//                         margin: 25px 0;
+//                     }
+//                 }
 
-                img {
-                    width: 190px;
-                    height: calc(190px * 1.5);
-                    margin-bottom: 20px;
-                    box-shadow: 0px 1px 2px $gray3;
-                    transition: 0.5s;
-                }
+//                 img {
+//                     width: 190px;
+//                     height: calc(190px * 1.5);
+//                     margin-bottom: 20px;
+//                     box-shadow: 0px 1px 2px $gray3;
+//                     transition: 0.5s;
+//                 }
 
-                p {
-                    width: 90%;
-                    margin: 0 5% 2%;
-                }
+//                 p {
+//                     width: 90%;
+//                     margin: 0 5% 2%;
+//                 }
 
-                 p:nth-of-type(1) {
-                    font-size: 23px;
-                    font-weight: bold;
-                    font-family: $fontSerif;
-                    transition: 0.5s;
-                }
+//                  p:nth-of-type(1) {
+//                     font-size: 23px;
+//                     font-weight: bold;
+//                     font-family: $fontSerif;
+//                     transition: 0.5s;
+//                 }
 
-                p:nth-of-type(2), p:nth-of-type(3) {
-                    font-size: 12px;
-                }
+//                 p:nth-of-type(2), p:nth-of-type(3) {
+//                     font-size: 12px;
+//                 }
 
-                p:nth-of-type(4) {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: $fontSerif;
-                    color: $violet1;
-                }
+//                 p:nth-of-type(4) {
+//                     font-size: 20px;
+//                     font-weight: bold;
+//                     font-family: $fontSerif;
+//                     color: $violet1;
+//                 }
 
-                &:hover img,
-                &:hover div {
-                    box-shadow: 1px 5px 10px $gray3;
-                }
-                &:hover p:nth-of-type(1) {
-                    color: $violet1;
-                }
+//                 &:hover img,
+//                 &:hover div {
+//                     box-shadow: 1px 5px 10px $gray3;
+//                 }
+//                 &:hover p:nth-of-type(1) {
+//                     color: $violet1;
+//                 }
 
-                &:hover {
-                    img, div {
-                        box-shadow: 1px 5px 10px $gray3;
-                    }
-                    p:nth-of-type(1) {
-                        color: $violet1;
-                    }
-                }
-            }
+//                 &:hover {
+//                     img, div {
+//                         box-shadow: 1px 5px 10px $gray3;
+//                     }
+//                     p:nth-of-type(1) {
+//                         color: $violet1;
+//                     }
+//                 }
+//             }
 
-            &::after {
-                @include setAfter;
-            }
-        }
-    }
+//             &::after {
+//                 @include setAfter;
+//             }
+//         }
+//     }
 
-    .bookListButton {
-        text-align: center;
-        font-size: 30px;
-        line-height: 31px;
-        color: $violet1;
-        box-sizing: border-box;
-        border: 1px solid $violet1;
-        position: absolute;
-        transform: translateY(-50%);
-        top: 50%;
-        cursor: pointer;
-        @include makeRoundedSquare(40px, 50%);
+//     .bookListButton {
+//         text-align: center;
+//         font-size: 30px;
+//         line-height: 31px;
+//         color: $violet1;
+//         box-sizing: border-box;
+//         border: 1px solid $violet1;
+//         position: absolute;
+//         transform: translateY(-50%);
+//         top: 50%;
+//         cursor: pointer;
+//         @include makeRoundedSquare(40px, 50%);
 
-        &:first-of-type {
-            left: 5px;
-        }
+//         &:first-of-type {
+//             left: 5px;
+//         }
 
-        &:last-of-type {
-            right: 5px;
-        }
-    }
-}
+//         &:last-of-type {
+//             right: 5px;
+//         }
+//     }
+// }
 
 // 카테고리
 .categories {

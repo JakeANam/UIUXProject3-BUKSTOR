@@ -1,40 +1,77 @@
 @charset "utf-8";
 
 #bookAbstract {
-    background-color: red;
+    margin-top: 100px;
 
     img {
         display: block;
-        width: 300px;
-        height: 450px;
-        background-color: orange;
+        width: 400px;
+        height: 600px;
         float: left;
     }
     
+    &>div{
+        float: right;
+        padding: 0 25px;
+        box-sizing: border-box;
+        width: calc(100% - 400px);
+
+        h1 {
+            margin: 0 0 10px;
+            &:first-of-type {
+                color: $violet1;
+                font-size: 50px;
+            }
+            
+            &:last-of-type {
+                font-size: 30px;
+            }
+        }
+
+        ul {
+            margin-top: 50px;
+            font-size: 20px;
+            
+            span {
+                display: inline-block;
+                width: 100px;
+                font-weight: bold;
+                color: $violet1
+            }
+        }
+
+        p {
+            margin: 10px 0;
+        }
+    }
+
     &::after {
         @include setAfter();
+        margin-bottom: 100px;
     }
 }
 
 #tabBar {
+    margin-bottom: 150px;
+    height: 73px;
     clear: both;
+    z-index: 1;
     border-top: 1px solid $gray2;
     border-bottom: 1px solid $gray2;
-    background-color: $whitePerfect;
-    z-index: 1;
+
     .wrap{
+        box-sizing: border-box;
         height: 73px;
-        line-height: 75px;
+        line-height: 73px;
         font-size: 25px;
         font-weight: bold;
+        padding: 0 25px;
+        background-color: $whitePerfect;
 
         ul {
-            width: 100%;
-
             li {
                 float: left;
                 margin-right: 30px;
-                box-sizing: border-box;
 
                 a {
                     font-family: $fontSerif;
@@ -82,13 +119,21 @@
 
         p {
             float: left;
+            font-family: $fontSerif;
+
+            &:last-of-type {
+                font-weight: bold;
+                margin-left: 40px;
+                font-size: 40px;
+            }
         }
+
         ul {
             float: right;
 
-            li {
+            &:first-of-type li {
                 float: left;
-
+                
                 a {
                     font-family: $fontSerif;
                     font-size: 25px;
@@ -97,8 +142,35 @@
                     border-radius: 20px;
                     padding: 15px;
                     margin: 0 5px;
+                    transition: 0.5s;
 
                     &:hover {
+                        background-color: $violet2;
+                    }
+                }
+            }
+
+            &:last-of-type {
+                
+                overflow: hidden;
+                border-radius: 15px;
+                border: 1px solid $whitePerfect;
+                height: 50px;
+                line-height: 50px;
+                margin: 25px;
+
+                li {
+                    float: left;
+                    width: 30px;
+                    text-align: center;
+
+                    &:nth-of-type(2) {
+                        border-left: 1px solid $whitePerfect;
+                        border-right: 1px solid $whitePerfect;
+                    }
+
+                    &:not(:nth-of-type(2)):hover {
+                        cursor: pointer;
                         background-color: $violet2;
                     }
                 }

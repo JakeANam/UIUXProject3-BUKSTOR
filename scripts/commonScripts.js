@@ -20,3 +20,8 @@ fixHeader(); // 첫 화면 헤더 고정
 window.addEventListener("scroll", function(){
     fixHeader();
 });
+
+
+// 상세페이지로 이동준비
+const urlDetail = getkakaoBookURLParameter("1162540168", "isbn");
+asyncDetail = searchKakaoBookData_async(urlDetail);
