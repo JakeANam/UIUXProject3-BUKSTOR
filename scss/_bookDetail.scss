@@ -18,15 +18,16 @@
 
         h1 {
             margin: 0 0 10px;
-            &:first-of-type {
-                color: $violet1;
-                font-size: 50px;
-            }
-            
-            &:last-of-type {
+        }
+
+        &>h1 {
+            color: $violet1;
+            font-size: 50px;
+        }
+
+        .addAbstract>h1 {
                 font-size: 30px;
             }
-        }
 
         ul {
             margin-top: 50px;
@@ -52,7 +53,6 @@
 }
 
 #tabBar {
-    margin-bottom: 150px;
     height: 73px;
     clear: both;
     z-index: 1;
@@ -85,21 +85,64 @@
     }
 }
 
-#bookBanner {
-    clear: both;
-    text-align: center;
-}
+#tabContents{
+    //padding-top: 70px;
+ 
+    // h1 {
+    //     margin-top: 0;
+    // }
 
-#problemSolving {
-    h3 {
-        margin: 15px 0;
+    // 도서 배너
+    #bookBanner {
+        clear: both;
+        text-align: center;
+    }
+
+    // 도서 정보
+    #bookInfo {
         font-size: 20px;
-    }
 
-    hr {
-        margin-top: 15px;
+        
+            h2 {
+                margin: 15px 0;
+                font-size: 28px;
+            }
+
+            hr {
+                margin: 15px 0;
+            }
+
+            .recommendation li{
+                margin: 30px 0;
+
+                span {
+                    display: block;
+                    margin-bottom: 15px;
+                    font-size: 21px;
+                    font-weight: bold;
+                }
+            }
+        }
+
+
+
+    // 리뷰
+
+    // 환불 안내
+    #problemSolving {
+        font-size: 20px;
+
+        h2 {
+            margin: 15px 0;
+            font-size: 28px;
+        }
+
+        hr {
+            margin: 15px 0;
+        }
     }
 }
+
 
 #purchase {
     width: 100%;

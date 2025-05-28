@@ -21,8 +21,9 @@ function showBigBannerImg() {
     }
 }
 
+// 화면 표시 시 실행
 showBigBannerImg();
-document.scrollTop = 0; // 처음 시작할 때는 페이지 맨 위로 설정
+
 
 window.addEventListener("scroll", function(){
     showBigBannerImg();

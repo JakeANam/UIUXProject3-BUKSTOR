@@ -2,7 +2,9 @@
 
 // 도서목록 애니메이션
 let listButton = document.getElementsByClassName("bookListButton");
+
 for (let i of listButton) {
+    // 도서 목록 버튼 클릭시 슬라이드
     i.onclick = function() {
         let listBody = i.parentNode.getElementsByTagName("ul")[0];
         let moveLeft = HorizonalSlideKeyframe("-1100px");
@@ -51,6 +53,11 @@ for (let i of listButton) {
     }
 }
 
+// 검색 기능
+
+
+// 관련 함수
+// 키프레임 설정
 function HorizonalSlideKeyframe(moveTo){
     return [{transform: "translateX(" + moveTo + ")"}];
 }

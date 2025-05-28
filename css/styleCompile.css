@@ -753,11 +753,11 @@ footer .footerBottom .copyright {
 #bookAbstract > div h1 {
   margin: 0 0 10px;
 }
-#bookAbstract > div h1:first-of-type {
+#bookAbstract > div > h1 {
   color: #76323f;
   font-size: 50px;
 }
-#bookAbstract > div h1:last-of-type {
+#bookAbstract > div .addAbstract > h1 {
   font-size: 30px;
 }
 #bookAbstract > div ul {
@@ -781,7 +781,6 @@ footer .footerBottom .copyright {
 }
 
 #tabBar {
-  margin-bottom: 150px;
   height: 73px;
   clear: both;
   z-index: 1;
@@ -808,17 +807,38 @@ footer .footerBottom .copyright {
   color: #76323f;
 }
 
-#bookBanner {
+#tabContents #bookBanner {
   clear: both;
   text-align: center;
 }
-
-#problemSolving h3 {
-  margin: 15px 0;
+#tabContents #bookInfo {
   font-size: 20px;
 }
-#problemSolving hr {
-  margin-top: 15px;
+#tabContents #bookInfo h2 {
+  margin: 15px 0;
+  font-size: 28px;
+}
+#tabContents #bookInfo hr {
+  margin: 15px 0;
+}
+#tabContents #bookInfo .recommendation li {
+  margin: 30px 0;
+}
+#tabContents #bookInfo .recommendation li span {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 21px;
+  font-weight: bold;
+}
+#tabContents #problemSolving {
+  font-size: 20px;
+}
+#tabContents #problemSolving h2 {
+  margin: 15px 0;
+  font-size: 28px;
+}
+#tabContents #problemSolving hr {
+  margin: 15px 0;
 }
 
 #purchase {
