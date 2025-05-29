@@ -3,23 +3,67 @@
 // 스크롤시 헤더 고정
 function fixHeader() {
     const headerBottom = document.getElementsByClassName("headerBottom")[0];
+    const searchListLayer = document.getElementById("searchListLayer");
 
     if (window.pageYOffset >= 25) {
         headerBottom.style.position = "fixed";
         headerBottom.style.top = '0';
         headerBottom.style.left = (-1 * this.window.scrollX) + "px"
+
+        searchListLayer.style.top = '75px';
         
+
     } else {
         headerBottom.style.position = "relative";
-        headerBottom.style.left = "0"
+        headerBottom.style.left = '0';
+
+        searchListLayer.style.top = (75 - window.pageYOffset) + "px";
+        
+    }
+    searchListLayer.style.height = (window.innerHeight) + "px";
+}
+
+// 검색 엔진 열기
+function openSearchpop() {
+    const searchPopup = document.getElementById("searchPopup");
+    if (searchPopup.style.top == "75px") {
+        searchPopup.style.top = "25px";
+    } else {
+        searchPopup.style.top = "75px";
+    }   
+}
+
+function goSearchBook() {
+    const searchValue = searchBook.searchValue;
+    if (searchValue.value == "") {
+        alert("검색어를 입력해주세요!");
+        searchValue.focus();
+    } else {
+        openSearchpop();
+        setTimeout(function() {
+            const searchPopup = document.getElementById("searchListLayer");
+            searchPopup.style.display = "block";
+        }, 1000);
+    }
+}
+
+function setSearchListHeight() {
+    // const searchListLayer = document.getElementById("searchListLayer");
+    let listHeight = 0;
+    if (window.pageYOffset >= 25) {
+        listHeight = "calc(100% - 75px)";
+    } else {
+        listHeight = "calc(100% - " + (100 - window.pageYOffset) + "px)";
     }
     
+    return listHeight;
 }
 
 fixHeader(); // 첫 화면 헤더 고정
 window.addEventListener("scroll", function(){
     fixHeader();
 });
+
 
 
 // 상세페이지로 이동준비

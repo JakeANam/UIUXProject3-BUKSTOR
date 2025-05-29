@@ -46,12 +46,19 @@
             const urlList3 = getkakaoBookURLParameter("여행",  undefined, undefined, undefined, 20);
             const asyncList3 = searchKakaoBookData_async(urlList3);
             mainPromiseList(asyncList3, 2);
+
+            // 책 검색
+            const urlSearch = getkakaoBookURLParameter("여행",  undefined, undefined, undefined, 20);
+            const asyncSearch = searchKakaoBookData_async(urlList3);
+            mainPromiseList(asyncSearch, 0, "searchBookList");
         }
         
     </script>
 </head>
 <body>
+    <!-- 헤더 -->
     <header>
+        <!-- 헤더 상부 -->
         <div class="headerTop">
             <div class="wrap">
                 <p>지금 가입하시면 문화상품권 10,000원이!</p>
@@ -65,6 +72,7 @@
                 
             </div>
         </div>
+        <!-- 헤더 하부 -->
         <div class="headerBottom">
             <div class="wrap">
                 <a href="./index.html" class="logo">
@@ -81,24 +89,43 @@
                         <li><a href="">이벤트</a></li>
                         <li><a href="">블로그</a></li>
                         <li>
-                            <a href="">
+                            <a href="javascript:openSearchpop()">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="#">
                                <i class="fa-solid fa-bag-shopping"></i>
                             </a>
                         </li>
                     </ul>
                 </nav>
+            </div>
+
+            <!-- 검색 엔진 -->
+            <div id="searchPopup">
+                <form name="searchBook">
+                    <input type="text" name="searchValue">
+                </form>
                 
+                <a href="javascript:goSearchBook()">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
+            <!-- 검색 도서 목록 -->
+            <div id="searchListLayer">
+                <p>
+                    <span>""</span>에 대한 0개의 검색결과
+                </p>
+                <a href="#">닫기</a>
+                <div class="searchBookList">
+                        <ul></ul>
+                </div>
             </div>
         </div>
-    </header>
-    <div id="searchPopup">
         
-    </div>
+    </header>
+    
     <div id="cartPopup">
         
     </div>
@@ -150,7 +177,10 @@
     <section>
         <div class="wrap">
             <!-- 메인페이지 도서 목록1 -->
-            <h1>5월 인기 도서</h1>
+            <h1>
+                5월 인기 도서
+                <a href="#">+ 더 보기</a>
+            </h1>
             <div class="mainBookList">
                 <p class="bookListButton">&lt;</p>
                 <div class="bookListWrap"><ul></ul></div>
@@ -158,7 +188,10 @@
             </div>
             
             <!-- 메인페이지 도서 목록2 -->
-            <h1>여름에 읽기 좋은 책</h1>
+            <h1>
+                여름에 읽기 좋은 책
+                <a href="#">+ 더 보기</a>
+            </h1>
             <div class="mainBookList">
                 <p class="bookListButton">&lt;</p>
                 <div class="bookListWrap"><ul></ul></div>
@@ -260,7 +293,10 @@
     <section>
         <!-- 메인페이지 도서 목록3 -->
         <div class="wrap">
-            <h1>함께 여행갈래요?</h1>
+            <h1>
+                함께 여행갈래요?
+                <a href="#">+ 더 보기</a>
+            </h1>
             <div class="mainBookList">
                 <p class="bookListButton">&lt;</p>
                 <div class="bookListWrap"><ul></ul></div>
@@ -272,7 +308,10 @@
     <!-- 이벤트 -->        
     <div id="event">
         <div class="wrap">
-            <h1>이벤트</h1>
+            <h1>
+                이벤트
+                <a href="#">+ 더 보기</a>
+            </h1>
             <ul>
                 <li>
                     <a href="#">
@@ -322,7 +361,10 @@
     <!-- 서점 블로그 -->
     <div id="blog">
         <div class="wrap">
-            <h1>BUKSTOR Blog</h1>
+            <h1>
+                BUKSTOR Blog
+                <a href="#">+ 더 보기</a>
+            </h1>
             <ul>
                 <li>
                     <a href="#">
@@ -414,7 +456,6 @@
     <!-- 전체 도서 목록 -->
     <div id="bookListLayer"></div>
 
-    <!-- 검색 도서 목록 -->
-    <div id="searchListLayer"></div>
+    
 </body>
 </html>

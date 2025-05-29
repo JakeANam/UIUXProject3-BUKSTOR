@@ -24,7 +24,6 @@ function showBigBannerImg() {
 // 화면 표시 시 실행
 showBigBannerImg();
 
-
 window.addEventListener("scroll", function(){
     showBigBannerImg();
 });

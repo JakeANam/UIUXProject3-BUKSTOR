@@ -62,11 +62,11 @@ async function searchKakaoBookData_async(kakaoBookParameter) {
 async function mainPromiseList(promiseData, listSort, listClass='mainBookList') {
     
     promiseData.then(function(data) {
-        let mainBookList = document.getElementsByClassName('mainBookList')[listSort].getElementsByTagName("ul")[0];
+        let mainBookList = document.getElementsByClassName(listClass)[listSort].getElementsByTagName("ul")[0];
         //5개 기준 ul width 100%
-        // if (listClass=='mainBookList') {
+        if (listClass=='mainBookList') {
             mainBookList.style.width = (20 * data.documents.length) + "%";    
-        // }
+        }
 
         const allBookInfo = data.documents;
         for (let i in allBookInfo) {

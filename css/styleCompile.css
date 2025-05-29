@@ -35,16 +35,24 @@ header {
   background-color: #ffffff;
   height: 100px;
   min-width: 1200px;
+  position: relative;
+  z-index: 7;
 }
 header > * > .wrap {
   width: 1150px;
+  height: 100%;
+  background-color: #ffffff;
+  position: relative;
+  z-index: 6;
 }
 header .headerTop {
   height: 25px;
   line-height: 25px;
   border-bottom: 1px solid #cccccc;
   font-size: 12px;
-  box-sizing: border-box;
+  position: relative;
+  background-color: #ffffff;
+  z-index: 7;
 }
 header .headerTop p {
   float: left;
@@ -68,34 +76,37 @@ header .headerTop .headerMember {
 header .headerBottom {
   width: 100%;
   min-width: 1200px;
-  height: 75px;
+  height: 74px;
   line-height: 75px;
-  background-color: inherit;
   border-bottom: 1px solid #cccccc;
-  box-sizing: border-box;
   position: relative;
   margin: 0 auto;
-  z-index: 2;
+  background-color: #ffffff;
+  z-index: 6;
 }
 header .headerBottom .logo {
   display: block;
   width: 200px;
-  height: 75px;
-  position: absolute;
-  left: 0;
+  height: 74px;
+  z-index: 4;
+  background-color: #ffffff;
+  float: left;
 }
-header .headerBottom img {
+header .headerBottom .logo img {
   width: 200px;
   padding: 12.5px 0;
 }
 header .headerBottom nav {
-  position: absolute;
-  right: 0;
+  height: 100%;
+  z-index: 7;
+  border-bottom: 1px solid #cccccc;
+  float: right;
 }
 header .headerBottom nav .main li {
+  background-color: #ffffff;
   float: left;
   padding: 0 15px;
-  height: 75px;
+  height: 74px;
 }
 header .headerBottom nav .main li a {
   color: #333333;
@@ -104,6 +115,36 @@ header .headerBottom nav .main li a {
 }
 header .headerBottom nav .main li:not(:nth-last-of-type(-n+2)) a:hover {
   color: #76323f;
+}
+
+#searchPopup {
+  position: absolute;
+  top: 25px;
+  right: 50px;
+  width: 300px;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+  z-index: 3;
+  transition: 1s;
+}
+#searchPopup input {
+  float: left;
+  display: block;
+  height: 26px;
+  margin: 10px;
+  width: 180px;
+  border: none;
+  background-color: #cccccc;
+  border-radius: 15px;
+  padding: 0 15px;
+}
+#searchPopup a {
+  float: right;
+  height: 30px;
+  line-height: 30px;
+  margin: 10px;
 }
 
 footer {
@@ -351,10 +392,42 @@ footer .footerBottom .copyright {
   width: 1200px;
   height: calc(100% - 75px);
   background-color: dodgerblue;
-  z-index: 1;
+  z-index: 2;
   top: 75px;
   transform: translateX(-50%);
   left: 50%;
+}
+
+#searchListLayer {
+  position: absolute;
+  width: 1200px;
+  left: -25px;
+  background-color: #ffffff;
+  background-color: orange;
+  z-index: -1;
+  overflow: hidden;
+}
+#searchListLayer p {
+  font-family: "Nanum Myeongjo", serif;
+  font-weight: bold;
+  font-size: 30px;
+}
+h1 > a {
+  float: right;
+  background-color: #76323f;
+  color: #ffffff;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 8px 23px;
+  border: 2px solid #76323f;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+h1 > a:hover {
+  background-color: #361118;
+  border-color: #361118;
 }
 
 .swiper {
@@ -644,6 +717,7 @@ footer .footerBottom .copyright {
 
 #event {
   margin: 100px 0;
+  padding: 5px 0 50px;
   width: 100%;
   min-width: 1200px;
   background-color: #f3f0ef;

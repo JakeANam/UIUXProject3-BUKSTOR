@@ -89,9 +89,15 @@ header {
     background-color: $whitePerfect;
     height: 100px;
     min-width: 1200px;
+    position: relative;
+    z-index: 7;
 
     &>*>.wrap {
         width: 1150px;
+        height: 100%;
+        background-color: $whitePerfect;
+        position: relative;
+        z-index: 6;
     }
 
     .headerTop {
@@ -99,7 +105,10 @@ header {
         line-height: 25px;
         border-bottom: 1px solid $gray2;
         font-size: 12px;
-        box-sizing: border-box;
+        // box-sizing: border-box;
+        position: relative;
+        background-color: $whitePerfect;
+        z-index: 7;
 
         p{
             float: left;
@@ -129,37 +138,42 @@ header {
     .headerBottom{
         width: 100%;
         min-width: 1200px;
-        height: 75px;
+        height: 74px;
         line-height: 75px;
-        background-color: inherit;
         border-bottom: 1px solid $gray2;
-        box-sizing: border-box;
         position: relative;
         margin: 0 auto;
-        z-index: 2;
+        background-color: $whitePerfect;
+        z-index: 6;
         
         .logo {
             display: block;
             width: 200px;
-            height: 75px;
-            position: absolute;
-            left: 0;
-        }
+            height: 74px;
+            z-index: 4;
+            background-color: $whitePerfect;
+            float: left;
 
-        img {
-            width: 200px;
-            padding: 12.5px 0;
+            img {
+                width: 200px;
+                padding: 12.5px 0;
+            }
         }
 
         nav {
-            position: absolute;
-            right: 0;
-            
+            height: 100%;
+            z-index: 7;
+            border-bottom: 1px solid $gray2;
+            float: right;
+
             .main{
+                
                 li {
+                    background-color: $whitePerfect;
                     float: left;
                     padding: 0 15px;
-                    height: 75px;
+                    height: 74px;
+
                     a {
                         color:$black1;
                         font-family: $fontSerif;
@@ -176,6 +190,39 @@ header {
     }
 }
 
+// 헤더 팝업
+// 검색 엔진
+#searchPopup {
+    position: absolute;
+    top: 25px;
+    right: 50px;
+    width: 300px;
+    height: 50px;
+    box-sizing: border-box;
+    border: 1px solid $gray2;
+    background-color: $whitePerfect;
+    z-index: 3;
+    transition: 1s;
+
+    input {
+        float: left;
+        display: block;
+        height: 26px;
+        margin: 10px;
+        width: 180px;
+        border: none;
+        background-color: $gray2;
+        border-radius: 15px;
+        padding: 0 15px;
+    }
+
+    a {
+        float: right;
+        height: 30px;
+        line-height: 30px;
+        margin: 10px;
+    }
+}  
 
 // 푸터
 footer {
@@ -447,11 +494,29 @@ footer {
     width: 1200px;
     height: calc(100% - 75px);
     background-color: dodgerblue;
-    z-index: 1;
+    z-index: 2;
     top: 75px;
     @include alignHorizonalCenter();
 }
 
 #searchListLayer {
+    // display: none;
+    position: absolute;
+    width: 1200px;
+    left: -25px;
+    background-color: $whitePerfect;
+    background-color: orange;
+    z-index: -1;
+    overflow: hidden;
+    // @include alignHorizonalCenter();
 
+    p {
+        font-family: $fontSerif;
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    li {
+
+    }
 }
