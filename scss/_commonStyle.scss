@@ -10,7 +10,6 @@ $gray2: #cccccc;
 $gray3: #666666;
 $whitePerfect: #ffffff;
 
-
 // 폰트 설정
 $fontSerif: 'Nanum Myeongjo', serif;
 $fontSanSerif: '맑은 고딕', sans-serif;
@@ -51,6 +50,33 @@ $fontSanSerif: '맑은 고딕', sans-serif;
     }
 }
 
+@mixin noImgInList {
+    width: 190px;
+    height: calc(190px * 1.5); 
+    color: $whitePerfect;
+    background-color: $violet1;
+    box-shadow: 0px 1px 2px $gray3;
+    margin-bottom: 20px;
+
+    img {
+        width: 75px;
+        height: 75px;
+        background-color: $whitePerfect;
+        margin: 25px auto;
+    }
+
+    p {
+        font-size: 23px;
+        font-weight: bold;
+        font-family: "Nanum Myeongjo", serif;   
+        text-align: center;
+        
+        &:hover {
+            color: $whitePerfect;
+        }   
+    }
+}
+
 // 공통
 * {
     margin: 0;
@@ -82,7 +108,6 @@ h1 {
     margin:75px 0 15px;
     font-size: 40px;
 }
-
 
 // 헤더
 header {
@@ -182,8 +207,7 @@ header {
                 }
 
                 li:not(:nth-last-of-type(-n+2)) a:hover {
-                    color: $violet1;
-                   
+                    color: $violet1;     
                 }
             }
         }
@@ -195,7 +219,7 @@ header {
 #searchPopup {
     position: absolute;
     top: 25px;
-    right: 50px;
+    right: calc(50% - 575px);
     width: 300px;
     height: 50px;
     box-sizing: border-box;
@@ -222,7 +246,7 @@ header {
         line-height: 30px;
         margin: 10px;
     }
-}  
+}
 
 // 푸터
 footer {
@@ -244,7 +268,6 @@ footer {
             top: 50%;
             left: 2%;
             font-size: 30px;
-            
 
             li {
                 font-family: $fontSerif;
@@ -252,7 +275,6 @@ footer {
                 &:first-child {
                     font-weight: bold;
                     font-size: 45px;
-                    
                 }
             }
         }
@@ -293,6 +315,7 @@ footer {
                 font-weight: bold;
                 font-size: 25px;
             }
+
             &:nth-of-type(even) {
                 font-size: 20px;
             }
@@ -345,7 +368,7 @@ footer {
 }
 
 // 에러페이지
-#warningError{
+#warningError {
     text-align: center;
     margin-top: 100px;
 
@@ -392,24 +415,17 @@ footer {
 
                 a {
                     display: block;
-                }
-
-                div {
-                    width: 190px;
-                    height: calc(190px * 1.5); 
-                    color: $whitePerfect;
-                    background-color: $violet1;
-                    box-shadow: 0px 1px 2px $gray3;
-                    margin-bottom: 20px;
-
-                    img {
-                        width: 75px;
-                        height: 75px;
-                        background-color: $whitePerfect;
-                        margin: 25px 0;
+                    &:hover>p:nth-of-type(1) {
+                    color: $violet1;
                     }
                 }
 
+                // 이미지가 없을 때 
+                div {
+                    @include noImgInList();
+                }
+
+                // 이미지가 있을때
                 img {
                     width: 190px;
                     height: calc(190px * 1.5);
@@ -423,7 +439,7 @@ footer {
                     margin: 0 5% 2%;
                 }
 
-                 p:nth-of-type(1) {
+                p:nth-of-type(1) {
                     font-size: 23px;
                     font-weight: bold;
                     font-family: $fontSerif;
@@ -445,16 +461,11 @@ footer {
                 &:hover div {
                     box-shadow: 1px 5px 10px $gray3;
                 }
-                &:hover p:nth-of-type(1) {
-                    color: $violet1;
-                }
+                
 
                 &:hover {
                     img, div {
                         box-shadow: 1px 5px 10px $gray3;
-                    }
-                    p:nth-of-type(1) {
-                        color: $violet1;
                     }
                 }
             }
@@ -500,23 +511,115 @@ footer {
 }
 
 #searchListLayer {
-    // display: none;
-    position: absolute;
-    width: 1200px;
-    left: -25px;
+    position: fixed;
+    display: none;
+    width: 1100px;
+    padding: 50px;
     background-color: $whitePerfect;
-    background-color: orange;
-    z-index: -1;
+    z-index: 5;
     overflow: hidden;
-    // @include alignHorizonalCenter();
+    transition: 1s;
+    transform: translate(0 ,-100%);
+    border: 1px solid $gray2;
 
-    p {
+    &>h1 {
         font-family: $fontSerif;
         font-weight: bold;
-        font-size: 30px;
+        font-size: 50px;
+        height: 70px;
+        line-height: 70px;
+        margin: 0 0 50px;
+        float: left;
+
+        span {
+            font-family: $fontSerif;
+            color: $violet1;
+        }
     }
 
-    li {
+    &>a {
+        @include buttonsForBanners();
+        float: right;
+    }
 
+    .searchBookList {
+        overflow: auto;
+        height: calc(100% - 220px);
+        bottom: 0;
+        position: relative;
+        clear: both;
+
+        li {
+            height: 285px;
+            padding: 30px 0;
+            border-top: 1px solid $gray2;
+
+            &>a:first-child {
+                float: left;
+                display: block;
+
+                div {
+                    @include noImgInList();
+                }
+
+                img {
+                    width: 190px;
+                    height: calc(190px * 1.5);
+                    display: block;
+                }
+            }
+
+            div {
+                float:left;
+                width: calc(100% - 360px);
+                padding-left: 10px;
+
+                p {
+                    &:nth-of-type(1) {
+                        font-size: 25px;
+                        font-weight: bold;
+                        font-family: $fontSerif;    
+                    }
+
+                    &:nth-of-type(2),&:nth-of-type(3) {
+                        display: inline;
+                    }
+
+                    &:nth-of-type(4) {
+                        font-size: 20px;
+                        font-weight: bold;
+                        font-family: $fontSerif; 
+                    }
+
+                    &:nth-of-type(5) {
+                        margin-top: 30px;
+                    }
+                }
+            }
+
+            .searchButtons {
+                float: right;
+                height: 100%;
+                width: 150px;
+                text-align: center;
+
+                a {
+                    height: calc(225px / 5);
+                    line-height: calc(225px / 5);
+                    margin: 10px;
+                    display: block;
+                    color:$whitePerfect;
+                    background-color: $violet1;   
+                    
+                    &:hover {
+                        background-color: $violet2;   
+                    }
+                }
+            }
+
+            &::after {
+                @include setAfter();
+            }         
+        }
     }
 }

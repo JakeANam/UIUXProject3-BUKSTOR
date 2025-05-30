@@ -66,21 +66,26 @@ async function mainPromiseList(promiseData, listSort, listClass='mainBookList') 
         //5개 기준 ul width 100%
         if (listClass=='mainBookList') {
             mainBookList.style.width = (20 * data.documents.length) + "%";    
+        } else if (listClass == 'searchBookList') {
+            mainBookList.innerHTML = "";
         }
+
+        
 
         const allBookInfo = data.documents;
         for (let i in allBookInfo) {
-            let listA = document.createElement("a");
-            listA.setAttribute("href", "javascript:moveToDetail(asyncDetail)")
+            // let listA = document.createElement("a");
+            // listA.setAttribute("href", "javascript:moveToDetail(asyncDetail)");
+            let listA = makeATag("", "javascript:moveToDetail(asyncDetail)");
             let listIndex = document.createElement("li");
 
             let bookImg = treatThumbnail(allBookInfo[i].thumbnail, Number(i));
             listA.append(bookImg);
+
             let title = document.createElement("p");
             title.innerText = allBookInfo[i].title;
-
-            if (listClass=='mainBookList') {
-            let publisher = document.createElement("p");
+            
+             let publisher = document.createElement("p");
             publisher.innerText = allBookInfo[i].publisher;
 
             let authors = document.createElement("p");
@@ -89,9 +94,31 @@ async function mainPromiseList(promiseData, listSort, listClass='mainBookList') 
             let price = document.createElement("p");
             price.innerText = ("￦ " + putCommaInNumber(allBookInfo[i].price));
 
-             listA.append(title, publisher, authors, price);
+            // 메인 도서 목록이면 삽입 방법
+            if (listClass == 'mainBookList') {
+                listA.append(title, publisher, authors, price);
+                listIndex.appendChild(listA);
+
+            
+            // 검색 목록이면 삽입 방법
+            } else if (listClass == 'searchBookList') {
+                let searchTexts = document.createElement("div");
+                let contents = document.createElement("p");
+                contents.innerText = allBookInfo[i].contents;
+                searchTexts.append(title, publisher," / ", authors, price, contents);
+
+                let searchButtons = document.createElement("div");
+                searchButtons.setAttribute("class", "searchButtons")
+                let detail = makeATag("자세히 보기", "javascript:moveToDetail(asyncDetail)");
+                let saveBook = makeATag("찜하기");
+                let gift = makeATag("선물하기");
+                let cart = makeATag("장바구니");
+                let purchase = makeATag("구매하기");
+                
+                searchButtons.append(detail, saveBook, gift, cart, purchase);
+                
+                listIndex.append(listA, searchTexts, searchButtons);
             }
-            listIndex.appendChild(listA);
             mainBookList.appendChild(listIndex);    
         }
 
@@ -149,7 +176,6 @@ async function moveToDetail(promiseData) {
              catch (error) {
                 this.location.href = "./warningNoBook.html"
             }
-
         });
 }
 
@@ -187,4 +213,5 @@ async function detailPromiseData(promiseData) {
         bookAbstract.getElementsByTagName("h1")[0].innerHTML
             += data.documents[0].title;
     });
+   
 }

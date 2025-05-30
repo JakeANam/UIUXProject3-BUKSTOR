@@ -3,24 +3,15 @@
 // 스크롤시 헤더 고정
 function fixHeader() {
     const headerBottom = document.getElementsByClassName("headerBottom")[0];
-    const searchListLayer = document.getElementById("searchListLayer");
 
     if (window.pageYOffset >= 25) {
         headerBottom.style.position = "fixed";
         headerBottom.style.top = '0';
         headerBottom.style.left = (-1 * this.window.scrollX) + "px"
-
-        searchListLayer.style.top = '75px';
-        
-
     } else {
         headerBottom.style.position = "relative";
         headerBottom.style.left = '0';
-
-        searchListLayer.style.top = (75 - window.pageYOffset) + "px";
-        
     }
-    searchListLayer.style.height = (window.innerHeight) + "px";
 }
 
 // 검색 엔진 열기
@@ -33,43 +24,88 @@ function openSearchpop() {
     }   
 }
 
+// 검색 엔진 세팅하기
+function fixSearchList() {
+    const searchListLayer = document.getElementById("searchListLayer");
+    let searchValue = searchBook.searchValue.value
+    
+    // Y위치가 위에서 25px 아래부터는 
+    if (window.pageYOffset >= 25) {
+        searchListLayer.style.top = '75px';
+    } else {
+        searchListLayer.style.top = (100 - window.pageYOffset) + "px";
+    }
+    searchListLayer.style.height = "calc(100% - " + searchListLayer.style.top + ")";
+
+    // 화면 너비 1200px 기준으로 위치 선정
+    let toTranslate = 'translate(';
+    
+    if (window.innerWidth < 1200) {
+        searchListLayer.style.left = (-1 * window.pageXOffset) + "px";
+        
+        searchListLayer.style.transform = 'translate(0, -100%)';
+        toTranslate += '0, '
+    } else {
+        searchListLayer.style.left = '50%';
+        toTranslate += '-50%, '
+        searchListLayer.style.transform = 'translate(-50%, -100%)';
+    }
+    
+    // 검색 내용이 없다면 다시 올리기
+    if (searchValue == "") {
+        toTranslate += '-100%)';
+    } else {
+        toTranslate += '0%)';   
+    }
+
+    searchListLayer.style.transform = toTranslate;
+}
+
+// 도서 검색하기
 function goSearchBook() {
-    const searchValue = searchBook.searchValue;
-    if (searchValue.value == "") {
+    let searchValue = searchBook.searchValue.value;
+    
+    const searchAmount = 20;
+
+    if (searchValue == "") {
         alert("검색어를 입력해주세요!");
         searchValue.focus();
     } else {
         openSearchpop();
+
+        // const oldSearchedData = document.getElementsByClassName("searchBookList")[0].getElementsByTagName("ul")[0].getElementsByTagName("li");
+        // if (oldSearchedData.length > 0) {
+        //     clearSearchBook();
+        // }
+
+        const urlSearch = getkakaoBookURLParameter(searchValue,  undefined, undefined, undefined, searchAmount);
+        const asyncSearch = searchKakaoBookData_async(urlSearch);
+        mainPromiseList(asyncSearch, 0, "searchBookList");
+        document.getElementById("searchResultSign").getElementsByTagName("span")[0].innerText = "\"" + searchValue + "\"";
+        document.getElementById("searchResultSign").getElementsByTagName("span")[1].innerText = searchAmount;
+        
         setTimeout(function() {
-            const searchPopup = document.getElementById("searchListLayer");
-            searchPopup.style.display = "block";
+            searchListLayer.style.display = 'block';
+            fixSearchList();
         }, 1000);
     }
 }
 
-function setSearchListHeight() {
-    // const searchListLayer = document.getElementById("searchListLayer");
-    let listHeight = 0;
-    if (window.pageYOffset >= 25) {
-        listHeight = "calc(100% - 75px)";
-    } else {
-        listHeight = "calc(100% - " + (100 - window.pageYOffset) + "px)";
-    }
-    
-    return listHeight;
+// 검색 초기화
+function clearSearchBook() {
+    searchBook.searchValue.value = "";
+    fixSearchList();
+    setTimeout(function() {
+        document.getElementsByClassName("searchBookList")[0].getElementsByTagName("ul")[0].innerHTML = "";
+    }, 2000);
 }
-
-fixHeader(); // 첫 화면 헤더 고정
-window.addEventListener("scroll", function(){
-    fixHeader();
-});
-
-
 
 // 상세페이지로 이동준비
 const urlDetail = getkakaoBookURLParameter("1162540168", "isbn");
 asyncDetail = searchKakaoBookData_async(urlDetail);
 
+
+// 기타 함수 모음
 /**
  * @description 숫자에 , 추가 (ex: 1234500 → 1,234,500)
  * @param {number} inputNum 입력 받은 숫자
@@ -106,4 +142,27 @@ function getDateForm(inputDate) {
     return publishDay;
 }
 
+// 
+function makeATag(textA, href="#") {
+    const buttonA = document.createElement("a");
+    buttonA.setAttribute("href", href);
+    buttonA.innerText = textA;
+    return buttonA;
+}
+
+// 공통 화면 설정
 document.scrollTop = 0; // 처음 시작할 때는 페이지 맨 위로 설정
+
+fixHeader(); // 첫 화면 헤더 고정
+fixSearchList()
+window.addEventListener("scroll", function() {
+    fixHeader();
+    fixSearchList()
+});
+
+window.addEventListener("resize", function() {
+    fixSearchList();
+});
+
+
+

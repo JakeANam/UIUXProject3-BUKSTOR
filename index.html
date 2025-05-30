@@ -14,7 +14,7 @@
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/7b6d17b275.js" crossorigin="anonymous"></script>
     <!-- Swiper -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- Javascript -->
     <script defer src="./scripts/kakaoBookAPIScripts.js"></script>
@@ -46,11 +46,6 @@
             const urlList3 = getkakaoBookURLParameter("여행",  undefined, undefined, undefined, 20);
             const asyncList3 = searchKakaoBookData_async(urlList3);
             mainPromiseList(asyncList3, 2);
-
-            // 책 검색
-            const urlSearch = getkakaoBookURLParameter("여행",  undefined, undefined, undefined, 20);
-            const asyncSearch = searchKakaoBookData_async(urlList3);
-            mainPromiseList(asyncSearch, 0, "searchBookList");
         }
         
     </script>
@@ -75,36 +70,40 @@
         <!-- 헤더 하부 -->
         <div class="headerBottom">
             <div class="wrap">
-                <a href="./index.html" class="logo">
-                    <img src="./images/logoColor.png">
-                </a>
-                
-                <!-- 헤더 메뉴 -->
-                <nav>
-                    <ul class="main">
-                        <li><a href="">인기 도서</a></li>
-                        <li><a href="">신상 도서</a></li>
-                        <li><a href="">도서 검색</a></li>
-                        <li><a href="">eBook</a></li>
-                        <li><a href="">이벤트</a></li>
-                        <li><a href="">블로그</a></li>
-                        <li>
-                            <a href="javascript:openSearchpop()">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                               <i class="fa-solid fa-bag-shopping"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                <div>
+                    <!-- 헤더 로고 -->
+                    <a href="./index.html" class="logo" >
+                        <img src="./images/logoColor.png" alt="헤더 로고">
+                    </a>
+                    
+                    <!-- 헤더 메뉴 -->
+                    <nav>
+                        <ul class="main">
+                            <li><a href="">인기 도서</a></li>
+                            <li><a href="">신상 도서</a></li>
+                            <li><a href="">도서 검색</a></li>
+                            <li><a href="">eBook</a></li>
+                            <li><a href="">이벤트</a></li>
+                            <li><a href="">블로그</a></li>
+                            <li>
+                                <a href="javascript:openSearchpop()">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-
+                
             <!-- 검색 엔진 -->
             <div id="searchPopup">
-                <form name="searchBook">
+                
+                <form name="searchBook" action=javascript:goSearchBook()>
                     <input type="text" name="searchValue">
                 </form>
                 
@@ -112,25 +111,11 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </a>
             </div>
-            <!-- 검색 도서 목록 -->
-            <div id="searchListLayer">
-                <p>
-                    <span>""</span>에 대한 0개의 검색결과
-                </p>
-                <a href="#">닫기</a>
-                <div class="searchBookList">
-                        <ul></ul>
-                </div>
-            </div>
         </div>
-        
     </header>
-    
+
     <div id="cartPopup">
         
-    </div>
-    <div id="searchList">
-
     </div>
 
     <!-- 메인페이지 -->
@@ -151,7 +136,7 @@
                 <h1>펭~하! 펭수 오피셜 굿즈 세트가 돌아왔쪄여~!</h1>
                 <div>
                     <img src="./images/펭수.png" alt="슬라이드2-1">
-                    <img src="./images/펭수 굿즈 세트.JPG" alt="슬라이드2-1">
+                    <img src="./images/펭수굿즈세트.jpg" alt="슬라이드2-2">
                     <p>￦ 30,000</p>
                     <a href="#">상품 구매 하기</a>
                 </div>
@@ -334,7 +319,7 @@
                 </li>
                 <li>
                     <a href="#">
-                        <div><img src="./images/가족과 책읽기.jpg" alt="이벤트3"></div>
+                        <div><img src="./images/가족과책읽기.jpg" alt="이벤트3"></div>
                         <div>
                             <p>
                                 가정의 달을 맞아 가족과 함께 책을...
@@ -437,7 +422,7 @@
                 <p>041-542-0234</p>
                 <p>Email:</p>
                 <p>inquiry@BUKSTOR.co.kr</p>
-                <img src="./images/paypals.jpg">
+                <img src="./images/paypals.jpg" alt="paypals">
             </div>
             <div class="footerBottom">
                 <ul class="sns">
@@ -453,8 +438,14 @@
         </div>
     </footer>
 
-    <!-- 전체 도서 목록 -->
-    <div id="bookListLayer"></div>
+    <!-- 검색 도서 목록 -->
+    <div id="searchListLayer">
+        <h1 id="searchResultSign">
+            <span>""</span>에 대한 <span>0</span>개의 검색결과
+        </h1>
+        <a href="javascript:clearSearchBook()">닫기</a>
+        <div class="searchBookList"><ul></ul></div>
+    </div>
 
     
 </body>

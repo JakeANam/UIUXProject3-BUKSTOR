@@ -29,7 +29,9 @@ function fixTabBar() {
     // }
 }
 
-// 구매 태그 고정
+/**
+ * @description 화면 하단에 구매 태그 고정
+ */
 function fixPurchase() {
     const purchaseWrap = document.getElementById("purchase").getElementsByClassName("wrap")[0];
     purchaseWrap.style.left = (-1 * this.window.scrollX) + "px";
@@ -132,18 +134,63 @@ for (let i of changeAmount) {
 
 // 태그 내용 변경
 function changeTabContents(choosen){
-    const allContents = document.getElementById("tabContents").children
+    const allContents = document.getElementById("tabContents").children;
     for (let i of allContents) {
         i.style.display = "none";
     }
 
-    allContents[choosen].style.display = "block"
+    allContents[choosen].style.display = "block";
+}
+
+// 리뷰 가져오기
+async function loadReviews() {
+    try {
+        const response = await fetch('./bookReviews.json');
+        const reviews = await response.json();
+        const reviewList = document.getElementById("bookReview").getElementsByClassName("reviewList")[0];
+        if (reviews.length > 0) {
+           
+            for (let i of reviews){
+                const oneReview = document.createElement("li");
+
+                const reviewer = document.createElement("ul");
+                reviewer.setAttribute("class", "reviewer");
+                const reviewName = document.createElement("li");
+                reviewName.innerText = i.id;
+                const reviewDate = document.createElement("li");
+                reviewDate.innerText = getDateForm(i.date);
+                
+                const reviewStars = document.createElement("li");
+                for (let j = 0; j < i.stars; j++) {
+                    reviewStars.innerHTML += '<i class="fa-solid fa-star"></i>';
+                }
+
+                reviewer.append(reviewDate, reviewStars, reviewName);
+
+                const commentReview = document.createElement("p");
+                commentReview.innerText = i.comment;
+
+                oneReview.append(reviewer, commentReview);
+                reviewList.appendChild(oneReview);
+            }
+
+        } else {
+            const oneReview = document.createElement("li");
+            reviewDate.innerText = "리뷰가 없습니다! 첫번째 리뷰를 써 주세요!";
+            reviewList.appendChild(oneReview);
+        }
+ 
+    } catch (error) {
+        console.log('에러발생! : ' + console.error());
+    }
+    
 }
 
 // 화면 표시 시 실행
 fixPurchase();
 fixTabBar();
 changeTabContents(0);
+loadReviews();
 window.addEventListener("scroll", function(){
     fixPurchase();
     fixTabBar();

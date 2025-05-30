@@ -5,13 +5,14 @@
 $bannerYellow: #FED800;
 $bannerViolet: #58252f;
 
-h1>a{
+h1>a {
     float: right;
     @include buttonsForBanners;
 }
 
 // 이미지슬라이드 (스와이퍼)
 .swiper {
+    width: 100%;
     min-width: 1200px;
     height: 650px;
     margin: 0 auto;
