@@ -70,40 +70,45 @@ async function mainPromiseList(promiseData, listSort, listClass='mainBookList') 
             mainBookList.innerHTML = "";
         }
 
-        
-
         const allBookInfo = data.documents;
+
+        // 도서 검색을 실시하면 검색 결과 설정
+        if (listClass == 'searchBookList') {
+            document.getElementById("searchResultSign").getElementsByTagName("span")[1].innerText = allBookInfo.length;
+        }
+
         for (let i in allBookInfo) {
-            // let listA = document.createElement("a");
-            // listA.setAttribute("href", "javascript:moveToDetail(asyncDetail)");
+            // a tag 생성
             let listA = makeATag("", "javascript:moveToDetail(asyncDetail)");
             let listIndex = document.createElement("li");
 
+            // 도서 이미지
             let bookImg = treatThumbnail(allBookInfo[i].thumbnail, Number(i));
             listA.append(bookImg);
 
+            // 제목
             let title = document.createElement("p");
             title.innerText = allBookInfo[i].title;
             
-             let publisher = document.createElement("p");
+            // 출판사
+            let publisher = document.createElement("p");
             publisher.innerText = allBookInfo[i].publisher;
 
+            // 저자
             let authors = document.createElement("p");
             authors.innerText = allBookInfo[i].authors;
 
+            // 가격
             let price = document.createElement("p");
             price.innerText = ("￦ " + putCommaInNumber(allBookInfo[i].price));
 
-            // 메인 도서 목록이면 삽입 방법
+            // 메인 도서 목록일 때 삽입 방법
             if (listClass == 'mainBookList') {
                 listA.append(title, publisher, authors, price);
                 listIndex.appendChild(listA);
-
             
-            // 검색 목록이면 삽입 방법
+            // 검색 목록일 때 삽입 방법
             } else if (listClass == 'searchBookList') {
-                document.getElementById("searchResultSign").getElementsByTagName("span")[1].innerText = allBookInfo.length;
-
                 let searchTexts = document.createElement("div");
                 let contents = document.createElement("p");
                 contents.innerText = allBookInfo[i].contents;
@@ -215,5 +220,4 @@ async function detailPromiseData(promiseData) {
         bookAbstract.getElementsByTagName("h1")[0].innerHTML
             += data.documents[0].title;
     });
-   
 }

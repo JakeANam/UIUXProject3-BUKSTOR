@@ -46,8 +46,15 @@
             const urlList3 = getkakaoBookURLParameter("여행",  undefined, undefined, undefined, 20);
             const asyncList3 = searchKakaoBookData_async(urlList3);
             mainPromiseList(asyncList3, 2);
+
+            // 초기 화면에서 실행
+            showBigBannerImg();
         }
-        
+
+        // 스크롤 시 실행
+        window.addEventListener("scroll", function(){
+            showBigBannerImg();
+        });
     </script>
 </head>
 <body>
@@ -113,10 +120,6 @@
             </div>
         </div>
     </header>
-
-    <div id="cartPopup">
-        
-    </div>
 
     <!-- 메인페이지 -->
     <!-- 스와이퍼 슬라이더 -->
@@ -446,7 +449,5 @@
         <a href="javascript:clearSearchBook()">닫기</a>
         <div class="searchBookList"><ul></ul></div>
     </div>
-
-    
 </body>
 </html>

@@ -86,17 +86,16 @@
 }
 
 #tabContents{
-    
+    margin-top: 75px;
+
     // 도서 배너
     #bookBanner {
-        padding-top: 75px;
         clear: both;
         text-align: center;
     }
 
     // 도서 정보
     #bookInfo {
-        
         font-size: 20px;
         
         h2 {

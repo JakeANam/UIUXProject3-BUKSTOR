@@ -281,7 +281,7 @@ footer .footerBottom .copyright {
 
 .mainBookList {
   position: relative;
-  height: 450px;
+  height: 475px;
 }
 .mainBookList .bookListWrap {
   width: 1100px;
@@ -1004,8 +1004,10 @@ h1 > a:hover {
   color: #76323f;
 }
 
+#tabContents {
+  margin-top: 75px;
+}
 #tabContents #bookBanner {
-  padding-top: 75px;
   clear: both;
   text-align: center;
 }

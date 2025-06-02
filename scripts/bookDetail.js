@@ -5,28 +5,28 @@
 // ISBN: 1162540168 9791162540169
 
 // 도서 정보가 존재하면 작동 - 외부 txt 파일을 불러들이기 위해
-
 document.getElementsByTagName("footer")[0].style.marginBottom = "100px";
 
 // 상세정보 태그 고정
-let tabContents = document.getElementById("tabContents");
-let tabBar = document.getElementById("tabBar");
-let tabBarLocation = window.pageYOffset + tabBar.getBoundingClientRect().top;
 function fixTabBar() {
-    // if (tabBarLocation - window.pageYOffset < 73) {
-    //     tabBar.style.position = "fixed";
-    //     tabBar.style.top = "73px";
-    //     tabBar.style.left = (-1 * this.window.scrollX) + "px";
-    // } else {
-    //     tabBar.style.position = "relative";
-    //     tabBar.style.left =  "0";
-    // }
+    let tabContents = document.getElementById("tabContents");
+    let tabBar = document.getElementById("tabBar");
+    let tabContentsLocation = tabContents.getBoundingClientRect().top;
+    if (tabContentsLocation - 75 < 150) {
+        tabBar.style.position = "fixed";
+        tabBar.style.top = "73px";
+        tabBar.style.left = (-1 * this.window.scrollX) + "px";
+    } else {
+        tabBar.style.position = "relative";
+        tabBar.style.top = "0";
+        tabBar.style.left =  "0";
+    }
 
-    // if (window.innerWidth < 1200) {
-    //     tabBar.style.width = "1200px";
-    // } else {
-    //     tabBar.style.width = "100%";
-    // }
+    if (window.innerWidth < 1200) {
+        tabBar.style.width = "1200px";
+    } else {
+        tabBar.style.width = "100%";
+    }
 }
 
 /**
@@ -132,16 +132,6 @@ for (let i of changeAmount) {
     }
 }
 
-// 태그 내용 변경
-function changeTabContents(choosen){
-    const allContents = document.getElementById("tabContents").children;
-    for (let i of allContents) {
-        i.style.display = "none";
-    }
-
-    allContents[choosen].style.display = "block";
-}
-
 // 리뷰 가져오기
 async function loadReviews() {
     try {
@@ -185,13 +175,3 @@ async function loadReviews() {
     }
     
 }
-
-// 화면 표시 시 실행
-fixPurchase();
-fixTabBar();
-changeTabContents(0);
-loadReviews();
-window.addEventListener("scroll", function(){
-    fixPurchase();
-    fixTabBar();
-});

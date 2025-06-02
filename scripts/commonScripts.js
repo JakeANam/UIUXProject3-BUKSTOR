@@ -73,16 +73,10 @@ function goSearchBook() {
     } else {
         openSearchpop();
 
-        // const oldSearchedData = document.getElementsByClassName("searchBookList")[0].getElementsByTagName("ul")[0].getElementsByTagName("li");
-        // if (oldSearchedData.length > 0) {
-        //     clearSearchBook();
-        // }
-
         const urlSearch = getkakaoBookURLParameter(searchValue,  undefined, undefined, undefined, searchAmount);
         const asyncSearch = searchKakaoBookData_async(urlSearch);
         mainPromiseList(asyncSearch, 0, "searchBookList");
         document.getElementById("searchResultSign").getElementsByTagName("span")[0].innerText = "\"" + searchValue + "\"";
-        // document.getElementById("searchResultSign").getElementsByTagName("span")[1].innerText = searchAmount;
         
         setTimeout(function() {
             searchListLayer.style.display = 'block';
@@ -142,7 +136,12 @@ function getDateForm(inputDate) {
     return publishDay;
 }
 
-// 
+/**
+ * @description 날짜 형태 맞춰서 출력 (0000년 0월 0일)
+ * @param {string} textA a tag에 입력할 내용
+ * @param {string} href a에 설정할 hyperlink: 기본값 = #
+ * @returns {Element} A tag
+ */
 function makeATag(textA, href="#") {
     const buttonA = document.createElement("a");
     buttonA.setAttribute("href", href);
@@ -154,12 +153,15 @@ function makeATag(textA, href="#") {
 document.scrollTop = 0; // 처음 시작할 때는 페이지 맨 위로 설정
 
 fixHeader(); // 첫 화면 헤더 고정
-fixSearchList()
+fixSearchList() // 검색엔진 고정
+
+// 스크롤시 실행
 window.addEventListener("scroll", function() {
     fixHeader();
     fixSearchList()
 });
 
+// 화면 크기 재설정 시 실행
 window.addEventListener("resize", function() {
     fixSearchList();
 });
