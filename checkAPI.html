@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="./scripts/kakaoBookAPIScripts.js"></script>
+    
+    <title>Document</title>
+     <script>
+        window.onload = function(){
+            const urlList1 = getkakaoBookURLParameter("1162540168", "isbn");
+            const asyncList1 = searchKakaoBookData_async(urlList1);
+            mainPromiseList(asyncList1, 0);
+            console.log("도서 표시 시범");
+            console.log(urlList1);
+            console.log(asyncList1);
+
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="headerTop">
+            <div class="wrap">
+                <p>지금 가입하시면 문화상품권 10,000원이!</p>
+                <a href="#" class="headerMember"><i class="fa-regular fa-circle-user"></i>    로그인/회원가입</a>
+                <ul class="sns">
+                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                </ul>
+                
+            </div>
+        </div>
+        <div class="headerBottom">
+            <div class="wrap">
+                <a href="./index.html" class="logo">
+                    <img src="./images/logoColor.png">
+                </a>
+                
+                <!-- 헤더 메뉴 -->
+                <nav>
+                 
+                    <ul class="main">
+                        <li><a href="">인기 도서</a></li>
+                        <li><a href="">신상 도서</a></li>
+                        <li><a href="">도서 검색</a></li>
+                        <li><a href="">eBook</a></li>
+                        <li><a href="">이벤트</a></li>
+                        <li><a href="">블로그</a></li>
+                        <li>
+                            <a href="">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                               <i class="fa-solid fa-bag-shopping"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                
+            </div>
+        </div>
+    </header>
+    <div class="mainBookList"><ul></ul></div>
+</body>
+</html>

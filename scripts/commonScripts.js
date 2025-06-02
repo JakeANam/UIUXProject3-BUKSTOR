@@ -82,7 +82,7 @@ function goSearchBook() {
         const asyncSearch = searchKakaoBookData_async(urlSearch);
         mainPromiseList(asyncSearch, 0, "searchBookList");
         document.getElementById("searchResultSign").getElementsByTagName("span")[0].innerText = "\"" + searchValue + "\"";
-        document.getElementById("searchResultSign").getElementsByTagName("span")[1].innerText = searchAmount;
+        // document.getElementById("searchResultSign").getElementsByTagName("span")[1].innerText = searchAmount;
         
         setTimeout(function() {
             searchListLayer.style.display = 'block';

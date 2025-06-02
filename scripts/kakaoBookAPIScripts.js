@@ -102,6 +102,8 @@ async function mainPromiseList(promiseData, listSort, listClass='mainBookList') 
             
             // 검색 목록이면 삽입 방법
             } else if (listClass == 'searchBookList') {
+                document.getElementById("searchResultSign").getElementsByTagName("span")[1].innerText = allBookInfo.length;
+
                 let searchTexts = document.createElement("div");
                 let contents = document.createElement("p");
                 contents.innerText = allBookInfo[i].contents;
