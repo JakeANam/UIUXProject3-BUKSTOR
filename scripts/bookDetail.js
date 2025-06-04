@@ -7,7 +7,9 @@
 // 도서 정보가 존재하면 작동 - 외부 txt 파일을 불러들이기 위해
 document.getElementsByTagName("footer")[0].style.marginBottom = "100px";
 
-// 상세정보 태그 고정
+/**
+ * @description 상세정보 태그 고정
+ */
 function fixTabBar() {
     let tabContents = document.getElementById("tabContents");
     let tabBar = document.getElementById("tabBar");
